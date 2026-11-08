@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TECNOVARA · Educación gratuita creada por un estudiante</title>
-<link rel="icon" href="/favicon.ico" sizes="36x36">
+<link rel="icon" href="/favicon.ico" sizes="any">
 <meta name="description" content="TECNOVARA es un proyecto de educación gratuita creado por Cristóbal, un estudiante de 11 años. Cursos en línea, a tu ritmo y con certificado gratuito.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
@@ -22,6 +22,8 @@ a{color:var(--acc)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
 .logo{font:700 22px "Bricolage Grotesque",sans-serif;color:var(--ink);text-decoration:none}
 .logo b{color:var(--acc)}
+.logo{display:inline-flex;align-items:center;gap:10px}
+.logo img{width:30px;height:30px;display:block;border-radius:6px}
 .top nav{display:flex;gap:20px}
 .top nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:16px}
 .top nav a:hover{color:var(--acc)}
@@ -56,12 +58,26 @@ a.curso:hover{border-color:var(--acc)}
 footer{padding:30px 0 40px;color:var(--mut);font-size:15px;border-top:1px solid var(--line)}
 footer p{max-width:70ch;margin:0 0 8px}
 @media(max-width:760px){.why{grid-template-columns:1fr}.top nav{gap:12px}.btn.alt{margin:10px 0 0}.hero{padding:44px 0}}
+
+.rv{opacity:1}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease var(--d,0s),transform .7s ease var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.js #sobre-mi h2.rv::after{content:"";display:block;height:5px;width:0;background:var(--acc2);border-radius:4px;margin-top:8px;transition:width .8s ease .3s}
+.js #sobre-mi h2.rv.in::after{width:90px}
+#sobre-mi h2::after{content:"";display:block;height:5px;width:90px;background:var(--acc2);border-radius:4px;margin-top:8px}
+.js #sobre-mi h2.rv::after{width:0}
+.about p{max-width:60ch}
+.edades{list-style:none;display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:8px 0 0}
+.edades li{background:var(--acc);color:var(--onacc);font-weight:600;border-radius:999px;padding:6px 18px}
+.js .edades li.rv{transform:translateY(22px) scale(.85)}
+.js .edades li.rv.in{transform:none}
+@media(prefers-reduced-motion:reduce){.js .rv,.js .rv.in,.js #sobre-mi h2.rv::after{transition:none;opacity:1;transform:none}.js #sobre-mi h2.rv::after{width:90px}}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#inicio">TECNO<b>VARA</b></a>
+    <a class="logo" href="#inicio"><img src="/favicon.ico" alt="" width="30" height="30">TECNO<b>VARA</b></a>
     <nav aria-label="Principal">
       <a href="#que-es">Qué es</a>
       <a href="/cursos/">Cursos</a>
@@ -112,11 +128,17 @@ footer p{max-width:70ch;margin:0 0 8px}
   <section id="sobre-mi">
     <div class="wrap about">
       <div>
-        <h2>Sobre mí</h2>
-        <p>¡Hola! Soy Cristóbal, tengo 11 años y soy el creador de TECNOVARA. Me gusta la tecnología y quiero compartir lo que aprendo para que más personas puedan usarla.</p>
-        <p>Pronto contaré aquí más sobre mí y sobre cómo construyo este proyecto.</p>
-        <!-- Cuando esté listo: añadir texto final, enlace a GitHub y, si lo deseas, una foto o un avatar. -->
-        <div class="note">Esta sección está en construcción.</div>
+        <h2 class="rv">Sobre mí</h2>
+        <p class="rv" style="--d:.1s">Soy Cristóbal, un estudiante de Chile, que tiene 11 años, y quiero expresar públicamente mis aprendizajes y entendimientos de un computador.</p>
+        <p class="rv" style="--d:.25s">Yo siento que la educación respecto a la tecnología <b>no debe ser con gastos de dinero</b>, por eso, yo hice esta página gratuita. Yo ocupo computador desde los 5 años, lo cual entiendo todo sobre computador.</p>
+        <p class="rv" style="--d:.4s">La aplicación va dirigida para todo tipo de edades:</p>
+        <ul class="edades" aria-label="Edades a las que va dirigida">
+          <li class="rv" style="--d:.5s">Niños</li>
+          <li class="rv" style="--d:.65s">Adolescentes</li>
+          <li class="rv" style="--d:.8s">Adultos</li>
+          <li class="rv" style="--d:.95s">Adultos mayores</li>
+        </ul>
+        <!-- Cuando esté listo: añadir enlace a GitHub y, si lo deseas, una foto o un avatar. -->
       </div>
     </div>
   </section>
@@ -128,5 +150,16 @@ footer p{max-width:70ch;margin:0 0 8px}
     <p>TECNOVARA es un proyecto educativo independiente y no tiene ninguna alianza oficial con Canva ni con otras marcas que se mencionen en sus cursos.</p>
   </div>
 </footer>
+<script>
+(function(){
+  var els=document.querySelectorAll(".rv");
+  if(!("IntersectionObserver" in window)){return}
+  document.documentElement.classList.add("js");
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}});
+  },{threshold:.2});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
 </body>
 </html>
