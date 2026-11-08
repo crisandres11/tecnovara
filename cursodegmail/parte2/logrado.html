@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¡Curso completado! Gmail Parte 2 · TECNOVARA</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#f4f6fb;--surf:#fff;--ink:#14213d;--mut:#4d5a78;--line:#d9dfec;--acc:#2f5bff;--acc2:#ffc93c;--onacc:#fff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1730;--surf:#18223f;--ink:#eef1fa;--mut:#a9b4d0;--line:#2c3860;--acc:#7b97ff;--onacc:#0f1730}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 "Source Sans 3",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:3px}
+.topbar{border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.in{max-width:900px;margin:auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.in a{text-decoration:none;color:var(--ink);font-weight:600;font-size:15px}
+.brand{font:700 21px "Bricolage Grotesque",sans-serif}.brand b{color:var(--acc)}
+main{max-width:900px;margin:auto;padding:50px 20px 60px}
+h1{font-size:clamp(2.4rem,7vw,4rem);letter-spacing:-.02em;margin-bottom:12px}
+.lead{color:var(--mut);max-width:56ch;margin:0 0 30px}
+.btn{display:inline-block;background:var(--acc);color:var(--onacc);text-decoration:none;font:600 17px "Source Sans 3",sans-serif;border:0;border-radius:10px;padding:12px 22px;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.box{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:26px;margin-bottom:24px}
+.box h2{font-size:1.6rem;margin-bottom:8px}
+input[type=text]{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:min(100%,340px);margin-right:8px}
+.cert{border:3px double var(--acc);border-radius:14px;padding:34px 20px;text-align:center;margin-top:22px;background:var(--surf)}
+.cert h3{font-size:2rem;margin:6px 0}
+.cert .nm{font:700 2.2rem "Bricolage Grotesque",sans-serif;margin:14px 0;overflow-wrap:anywhere}
+.cert p{margin:6px 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.hide{display:none}
+footer{max-width:900px;margin:auto;padding:0 20px 40px;color:var(--mut);font-size:14px}
+@media print{body *{visibility:hidden}.cert,.cert *{visibility:visible}.cert{position:absolute;left:0;top:0;width:100%;border-color:#2f5bff;color:#14213d;background:#fff}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="in"><a class="brand" href="/">TECNO<b>VARA</b></a><a href="/cursos/">Todos los cursos</a></div></div>
+
+<main>
+  <section id="ok" class="hide">
+    <h1>¡Lo lograste!</h1>
+    <p class="lead">Completaste el Curso de Gmail (Parte 2). Ya sabes ingresar a tu cuenta con tu correo y tu contraseña. ¡Felicidades por tu esfuerzo!</p>
+
+    <div class="box">
+      <h2>Tu certificado gratuito</h2>
+      <p>Escribe tu nombre tal como quieres que aparezca.</p>
+      <p><input type="text" id="nm" aria-label="Tu nombre completo" placeholder="Nombre y apellido" maxlength="60"><button class="btn" id="mk">Generar certificado</button></p>
+      <div id="out"></div>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="/cursos/">Ver más cursos</a>
+      <a class="btn alt" href="/cursodegmail/parte2/">Repasar el curso</a>
+      <a class="btn alt" href="/cursodegmail/">Parte 1: enviar un correo</a>
+    </div>
+  </section>
+
+  <section id="no" class="hide">
+    <h1>Aún no terminas</h1>
+    <p class="lead">Para ver esta página debes completar las lecciones 1 a 5 del Curso de Gmail (Parte 2) y aprobar la evaluación final.</p>
+    <a class="btn" href="/cursodegmail/">Volver al curso</a>
+  </section>
+</main>
+
+<footer>TECNOVARA es un proyecto educativo independiente y no tiene ninguna alianza oficial con Google ni con Gmail. Este certificado es de finalización del curso y no es un título oficial.</footer>
+
+<script>
+(function(){
+  var done=false;
+  try{
+    var st=JSON.parse(localStorage.getItem("tecnovara-gmail2")||"null");
+    done=!!(st&&st.done&&st.quiz&&st.quiz.fin&&st.quiz.fin.pass&&[0,1,2,3,4].every(function(i){return st.done.indexOf(i)>-1}));
+  }catch(e){}
+  document.getElementById(done?"ok":"no").classList.remove("hide");
+  document.getElementById("mk").addEventListener("click",function(){
+    var n=document.getElementById("nm").value.trim();
+    if(!n){document.getElementById("nm").focus();return}
+    var d=new Date().toLocaleDateString("es-CL",{day:"numeric",month:"long",year:"numeric"});
+    var out=document.getElementById("out");
+    out.innerHTML='<div class="cert"><div class="brand">TECNO<b>VARA</b></div><h3>Certificado de finalización</h3><p>Se certifica que</p><div class="nm"></div><p>completó el Curso de Gmail (Parte 2)</p><p>Herramientas digitales · Nivel principiante</p><p></p></div><div class="actions" style="margin-top:14px"><button class="btn alt" id="pr">Imprimir o guardar en PDF</button></div>';
+    out.querySelector(".nm").textContent=n;
+    out.querySelector(".cert p:last-child").textContent=d;
+    document.getElementById("pr").addEventListener("click",function(){window.print()});
+  });
+})();
+</script>
+</body>
+</html>
