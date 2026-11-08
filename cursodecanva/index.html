@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curso de Canva · TECNOVARA</title>
+<meta name="description" content="Curso gratuito de Canva para principiantes, con certificado gratis de TECNOVARA.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#f4f6fb;--surf:#fff;--ink:#14213d;--mut:#4d5a78;--line:#d9dfec;--acc:#2f5bff;--acc2:#ffc93c;--ok:#0f8a5f;--bad:#c0392b}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1730;--surf:#18223f;--ink:#eef1fa;--mut:#a9b4d0;--line:#2c3860;--acc:#7b97ff;--ok:#4cd1a0;--bad:#ff8a7a}}
+*{box-sizing:border-box}
+html{scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Source Sans 3",system-ui,sans-serif;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.15;margin:0}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+header.hero{padding:48px 20px 36px;max-width:1100px;margin:auto}
+.brand{font:700 18px "Bricolage Grotesque",sans-serif;color:var(--acc)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.8rem);margin:18px 0 12px}
+.hero p{max-width:60ch;color:var(--mut);margin:0 0 18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tags span{background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:15px}
+.tags .free{background:var(--acc2);border-color:var(--acc2);color:#14213d;font-weight:600}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:12px 22px;font-weight:600}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .btn{color:#0f1730}}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.app{max-width:1100px;margin:20px auto 0;padding:0 20px 60px;display:grid;grid-template-columns:290px 1fr;gap:28px;align-items:start}
+nav.side{position:sticky;top:12px;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:16px}
+nav.side h2{font-size:1.05rem;margin-bottom:6px}
+.bar{height:8px;background:var(--line);border-radius:8px;overflow:hidden;margin:8px 0 12px}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+nav.side ol{list-style:none;margin:0;padding:0}
+nav.side li button{width:100%;text-align:left;background:none;border:0;color:var(--ink);padding:8px 10px;border-radius:8px;display:flex;gap:10px;font-size:15px;line-height:1.35}
+nav.side li button:hover{background:var(--bg)}
+nav.side li button[aria-current=true]{background:var(--acc);color:#fff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) nav.side li button[aria-current=true]{color:#0f1730}}
+nav.side .n{font-weight:700;min-width:1.4em}
+nav.side li.done .n::after{content:"✓";color:var(--ok);margin-left:2px}
+nav.side li button[aria-current=true] .n::after{color:inherit}
+main.lesson{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:30px;min-width:0}
+main h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:14px}
+main h3{font-size:1.2rem;margin:26px 0 8px}
+main p,main li{max-width:68ch}
+main ul,main ol{padding-left:22px}
+.ex{border-left:5px solid var(--acc2);background:var(--bg);padding:12px 16px;border-radius:0 10px 10px 0;margin:18px 0}
+.ex b{display:block}
+.note{border:1px dashed var(--mut);border-radius:10px;padding:10px 14px;font-size:15px;color:var(--mut);margin:18px 0}
+figure{margin:20px 0}
+figure svg{max-width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+figcaption{font-size:14px;color:var(--mut);margin-top:6px}
+.quiz{margin-top:30px;border-top:2px solid var(--line);padding-top:20px}
+.q{margin:16px 0}
+.q p{font-weight:600;margin:0 0 6px}
+.q label{display:block;padding:6px 10px;border-radius:8px;cursor:pointer}
+.q label:hover{background:var(--bg)}
+.fb{font-size:15px;margin-top:6px}
+.ok{color:var(--ok)}.bad{color:var(--bad)}
+.nav2{display:flex;justify-content:space-between;gap:10px;margin-top:30px;flex-wrap:wrap}
+.cert{border:3px double var(--acc);border-radius:14px;padding:30px;text-align:center;margin-top:20px}
+.cert h3{font-size:1.8rem}
+.cert .nm{font:700 2rem "Bricolage Grotesque",sans-serif;margin:12px 0}
+input[type=text]{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:min(100%,320px)}
+footer{max-width:1100px;margin:auto;padding:0 20px 40px;color:var(--mut);font-size:14px}
+@media(max-width:820px){.app{grid-template-columns:1fr}nav.side{position:static}main.lesson{padding:20px}}
+@media print{body *{visibility:hidden}.cert,.cert *{visibility:visible}.cert{position:absolute;left:0;top:0;width:100%}}
+
+.topbar{border-bottom:1px solid var(--line);background:var(--bg);padding-top:env(safe-area-inset-top,0px)}
+.topbar .in{max-width:1100px;margin:auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.topbar a{text-decoration:none;color:var(--ink);font-weight:600;font-size:15px}
+.topbar .brand{font:700 21px "Bricolage Grotesque",sans-serif;color:var(--ink)}
+.topbar .brand b{color:var(--acc)}
+.wrap{max-width:1100px;margin:auto;padding:0 20px}
+.hero2{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;padding:56px 20px 48px;max-width:1100px;margin:auto}
+.hero2 h1{font-size:clamp(2.6rem,7vw,4.6rem);letter-spacing:-.02em;margin:0 0 14px}
+.hero2 p{color:var(--mut);font-size:1.15rem;max-width:52ch;margin:0 0 22px}
+.ficha{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+.ficha dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 18px}
+.ficha dt{color:var(--mut);font-size:15px}
+.ficha dd{margin:0;font-weight:600}
+.ficha dd.free{background:var(--acc2);color:#14213d;display:inline-block;border-radius:6px;padding:0 10px;justify-self:start}
+.band{background:var(--surf);border-block:1px solid var(--line);padding:52px 0;margin-bottom:44px}
+.band h2,.info h2,.go h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:14px}
+.canva{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.canva img{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--line);background:var(--bg);min-height:120px}
+.canva p{margin:0 0 12px;max-width:58ch}
+.canva ul{padding-left:20px;margin:0 0 12px}
+.info{margin-bottom:44px}
+.info .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.info .col{border-top:3px solid var(--acc);padding-top:12px}
+.info h3{font-size:1.2rem;margin-bottom:6px}
+.info .col p,.info .col ul{margin:0;color:var(--mut)}
+.info .col ul{padding-left:18px}
+.go{max-width:1100px;margin:0 auto 18px;padding:0 20px}
+.go p{color:var(--mut);margin:0}
+@media(max-width:820px){.hero2,.canva{grid-template-columns:1fr}.hero2{padding-top:36px}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="in"><a class="brand" href="/">TECNO<b>VARA</b></a><a href="/#cursos">← Todos los cursos</a></div></div>
+
+<header class="hero2">
+  <div>
+    <h1>Curso de Canva</h1>
+    <p>Aprende a utilizar Canva desde cero y descubre cómo crear diseños atractivos para presentaciones, publicaciones, documentos y otros proyectos.</p>
+    <button class="btn" id="start">Empezar el curso</button>
+  </div>
+  <aside class="ficha" aria-label="Datos del curso">
+    <dl>
+      <dt>Categoría</dt><dd>Diseño digital</dd>
+      <dt>Nivel</dt><dd>Principiante</dd>
+      <dt>Precio</dt><dd class="free">100 % gratuito</dd>
+      <dt>Modalidad</dt><dd>Autodidacta</dd>
+      <dt>Lecciones</dt><dd>10</dd>
+      <dt>Certificado</dt><dd>Gratuito, emitido por TECNOVARA</dd>
+    </dl>
+  </aside>
+</header>
+
+<section class="band" aria-labelledby="que-es">
+  <div class="wrap canva">
+    <div>
+      <h2 id="que-es">¿Qué es Canva?</h2>
+      <p>Canva es una plataforma de diseño en línea. Te permite crear imágenes, presentaciones y documentos sin necesidad de saber diseño profesional ni instalar programas complicados.</p>
+      <p>Funciona desde el navegador y también desde una app en el celular o la tablet. Te ofrece plantillas ya armadas, fotos, íconos, formas y tipos de letra que puedes arrastrar y modificar.</p>
+      <p>Con Canva puedes crear, por ejemplo:</p>
+      <ul><li>Presentaciones para el colegio o el trabajo.</li><li>Publicaciones para redes sociales.</li><li>Carteles, invitaciones y currículums.</li></ul>
+      <p>Tiene opciones gratuitas y otras de pago. En este curso usamos solo lo gratuito.</p>
+    </div>
+    <img src="/assets/Canva.png" alt="Imagen de Canva" width="640" height="400" loading="lazy">
+  </div>
+</section>
+
+<section class="info wrap" aria-labelledby="como-se-aprende">
+  <h2 id="como-se-aprende">Cómo funciona el curso</h2>
+  <div class="cols">
+    <div class="col"><h3>Lecciones prácticas</h3><p>Explicaciones sencillas con ejemplos y actividades para practicar mientras aprendes.</p></div>
+    <div class="col"><h3>Evaluación</h3><ul><li>Cuestionarios en algunos módulos.</li><li>Actividad práctica.</li><li>Proyecto final.</li></ul></div>
+    <div class="col"><h3>Certificado gratis</h3><p>Completa todas las lecciones y aprueba la evaluación final para obtener tu certificado de finalización.</p></div>
+  </div>
+</section>
+
+<div class="go"><h2>Empieza ahora</h2><p>Elige una lección en el menú o sigue el orden con el botón “Completar y seguir”.</p></div>
+
+
+<div class="app" id="course">
+  <nav class="side" aria-label="Lecciones del curso">
+    <h2>Programa</h2>
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="pbar"><i></i></div>
+    <div id="ptxt" style="font-size:14px;color:var(--mut)"></div>
+    <ol id="menu"></ol>
+  </nav>
+  <main class="lesson" id="lesson" tabindex="-1"></main>
+</div>
+
+<footer>
+  TECNOVARA es una plataforma educativa independiente y no tiene ninguna alianza oficial con Canva. Canva es una marca de sus respectivos propietarios. Su interfaz cambia con el tiempo, por lo que los nombres de los botones pueden variar ligeramente.
+</footer>
+
+<script>
+/* ---------- Ilustraciones (esquemas genéricos, no capturas de Canva) ---------- */
+const FIG={
+ui:`<figure><svg viewBox="0 0 520 260" role="img" aria-label="Esquema del editor: barra superior, panel lateral, lienzo y opciones"><rect x="0" y="0" width="520" height="34" fill="#2f5bff"/><text x="12" y="22" fill="#fff" font-size="13" font-family="sans-serif">Barra superior: menú, nombre del diseño, Compartir</text><rect x="0" y="34" width="110" height="226" fill="#dfe6fb"/><text x="10" y="58" font-size="12" font-family="sans-serif" fill="#14213d">Panel lateral</text><text x="10" y="82" font-size="11" font-family="sans-serif" fill="#14213d">Plantillas</text><text x="10" y="102" font-size="11" font-family="sans-serif" fill="#14213d">Elementos</text><text x="10" y="122" font-size="11" font-family="sans-serif" fill="#14213d">Texto</text><text x="10" y="142" font-size="11" font-family="sans-serif" fill="#14213d">Subidos</text><rect x="110" y="34" width="410" height="30" fill="#eef1fa"/><text x="120" y="54" font-size="12" font-family="sans-serif" fill="#14213d">Barra de opciones (cambia según lo que selecciones)</text><rect x="170" y="80" width="290" height="150" fill="#fff" stroke="#9aa6c8"/><text x="250" y="160" font-size="13" font-family="sans-serif" fill="#14213d">Lienzo (tu diseño)</text><rect x="110" y="238" width="410" height="22" fill="#eef1fa"/><text x="120" y="253" font-size="11" font-family="sans-serif" fill="#14213d">Zoom y páginas</text></svg><figcaption>Esquema simplificado del editor. La posición exacta de cada parte puede variar.</figcaption></figure>`,
+post:`<figure><svg viewBox="0 0 360 200" role="img" aria-label="Ejemplo de jerarquía en una publicación"><rect width="360" height="200" fill="#fff"/><rect x="12" y="12" width="176" height="176" fill="#ffc93c"/><text x="28" y="80" font-size="26" font-weight="700" font-family="sans-serif" fill="#14213d">3 hábitos</text><text x="28" y="108" font-size="26" font-weight="700" font-family="sans-serif" fill="#14213d">de estudio</text><text x="28" y="140" font-size="13" font-family="sans-serif" fill="#14213d">Guarda esta idea</text><text x="204" y="40" font-size="13" font-family="sans-serif" fill="#14213d">1. Título grande</text><text x="204" y="64" font-size="13" font-family="sans-serif" fill="#14213d">2. Texto de apoyo</text><text x="204" y="88" font-size="13" font-family="sans-serif" fill="#14213d">3. Color con contraste</text><text x="204" y="112" font-size="13" font-family="sans-serif" fill="#14213d">4. Mucho espacio libre</text></svg><figcaption>Una buena publicación tiene una jerarquía clara: primero se lee el título.</figcaption></figure>`,
+slide:`<figure><svg viewBox="0 0 360 200" role="img" aria-label="Estructura de una diapositiva"><rect width="360" height="200" fill="#fff" stroke="#9aa6c8"/><rect x="0" y="0" width="12" height="200" fill="#2f5bff"/><text x="30" y="50" font-size="22" font-weight="700" font-family="sans-serif" fill="#14213d">Título de la idea</text><circle cx="40" cy="90" r="4" fill="#14213d"/><text x="52" y="95" font-size="13" font-family="sans-serif" fill="#14213d">Primer punto, breve</text><circle cx="40" cy="120" r="4" fill="#14213d"/><text x="52" y="125" font-size="13" font-family="sans-serif" fill="#14213d">Segundo punto, breve</text><rect x="230" y="80" width="100" height="90" fill="#ffc93c"/><text x="244" y="130" font-size="12" font-family="sans-serif" fill="#14213d">Imagen o ícono</text></svg><figcaption>Una idea por diapositiva: título, dos o tres puntos y una imagen.</figcaption></figure>`
+};
+
+/* ---------- Lecciones ---------- */
+const L=[
+{t:"Introducción a Canva",h:`<p>Canva es una herramienta en línea para crear diseños sin ser diseñador. Funciona en el navegador y también como app para teléfono y tablet. Su gran ventaja es que ofrece plantillas, imágenes y elementos listos para usar.</p>
+<h3>¿Para qué sirve?</h3><ul><li>Presentaciones para clases o trabajo.</li><li>Publicaciones para redes sociales.</li><li>Documentos, currículums, invitaciones y carteles.</li></ul>
+<div class="ex"><b>Ejemplo práctico</b>Una vendedora de pasteles necesita un cartel con su menú. Con una plantilla de menú, cambia los textos y los colores, y en 20 minutos lo tiene listo para imprimir.</div>
+<h3>Ten en cuenta</h3><p>Canva tiene opciones gratuitas y otras de pago. Algunos elementos y plantillas llevan una marca especial que indica que son de pago. En este curso usamos solo lo gratuito.</p>
+<h3>Actividad</h3><p>Escribe en una hoja tres cosas que te gustaría diseñar. Las usarás en el proyecto final.</p>`},
+{t:"Crear una cuenta y conocer la interfaz",f:"ui",h:`<h3>Crear tu cuenta</h3><ol><li>Entra al sitio oficial de Canva desde tu navegador.</li><li>Elige registrarte con tu correo, tu cuenta de Google u otra opción disponible.</li><li>Sigue los pasos que te pide y confirma tu correo si te lo solicita.</li></ol>
+<p>Escribe la dirección del sitio tú mismo o usa un buscador. Evita enlaces dudosos y no compartas tu contraseña.</p>
+<h3>Las partes del editor</h3><p>Al abrir un diseño verás estas zonas:</p>
+FIGURE
+<ul><li><b>Barra superior:</b> nombre del diseño, deshacer y botón para compartir.</li><li><b>Panel lateral:</b> pestañas para plantillas, elementos, texto y archivos subidos.</li><li><b>Lienzo:</b> la hoja donde diseñas.</li><li><b>Barra de opciones:</b> aparece al seleccionar algo y muestra sus ajustes (color, tipo de letra, tamaño…).</li></ul>
+<div class="note">Canva cambia su interfaz de vez en cuando. Si no encuentras un botón, busca uno con el mismo ícono o nombre parecido.</div>`},
+{t:"Herramientas principales de Canva",q:"m3",h:`<h3>Lo que más usarás</h3>
+<ul><li><b>Plantillas:</b> diseños ya armados que puedes modificar.</li><li><b>Elementos:</b> formas, líneas, íconos, gráficos y fotos.</li><li><b>Texto:</b> cuadros para títulos, subtítulos y párrafos.</li><li><b>Subidos:</b> aquí cargas tus propias imágenes.</li><li><b>Deshacer / rehacer:</b> corrige errores sin miedo.</li></ul>
+<h3>Atajos útiles</h3><p>Seleccionar un objeto y presionar Supr lo elimina. Con Ctrl+C y Ctrl+V (Cmd en Mac) lo copias y pegas. Arrastrar una esquina cambia su tamaño.</p>
+<div class="ex"><b>Ejemplo práctico</b>Para un cartel: busca una forma en Elementos, cámbiale el color y escribe encima un título desde Texto.</div>
+<h3>Actividad práctica</h3><p>Abre un diseño en blanco, agrega una forma, un ícono y un cuadro de texto. Muévelos, cámbiales el tamaño y borra uno.</p>`},
+{t:"Crear diseños desde cero",h:`<h3>Elegir el tamaño correcto</h3><p>Al crear un diseño, Canva ofrece formatos como presentación, publicación de Instagram, documento o cartel. Elegir el formato correcto evita recortes al publicar. También puedes escribir un tamaño personalizado.</p>
+<h3>Pasos</h3><ol><li>Pulsa el botón de crear un diseño.</li><li>Elige el formato (por ejemplo, publicación cuadrada).</li><li>Escoge un color de fondo.</li><li>Agrega título, imagen y elementos de apoyo.</li><li>Revisa y guarda. Canva guarda automáticamente.</li></ol>
+<h3>Reglas básicas de diseño</h3><ul><li><b>Contraste:</b> letra clara sobre fondo oscuro, o al revés.</li><li><b>Pocos colores:</b> usa dos o tres.</li><li><b>Espacio libre:</b> no llenes todo.</li><li><b>Pocas tipografías:</b> máximo dos.</li></ul>
+<div class="ex"><b>Ejemplo práctico</b>Un anuncio de “Clases de inglés”: fondo azul, título blanco grande, una línea con el horario y un ícono. Nada más.</div>`},
+{t:"Uso de plantillas",h:`<h3>Cómo usarlas</h3><ol><li>En el panel lateral abre Plantillas.</li><li>Busca por tema, por ejemplo “cumpleaños” o “informe escolar”.</li><li>Haz clic en una para aplicarla.</li><li>Reemplaza los textos, fotos y colores por los tuyos.</li></ol>
+<h3>Consejos</h3><ul><li>Elige una plantilla con la estructura que necesitas; el estilo se puede cambiar después.</li><li>Si una plantilla tiene marca de pago, elige otra gratuita o reemplaza ese elemento por uno gratis.</li><li>Cambia algo personal: tus colores, tu logo, tu foto.</li></ul>
+<div class="ex"><b>Ejemplo práctico</b>Aplica una plantilla de invitación, cambia el nombre, la fecha y el lugar, y ajusta los colores al estilo de la fiesta.</div>
+<div class="note">Las plantillas son un punto de partida. Procura que tu diseño no sea idéntico al de otras personas.</div>`},
+{t:"Edición de textos, imágenes y elementos",f:"post",q:"m6",h:`<h3>Texto</h3><ul><li>Haz doble clic para editar. Usa la barra de opciones para cambiar tipo de letra, tamaño, color y alineación.</li><li>Crea jerarquía: título grande, subtítulo mediano, texto pequeño.</li><li>Usa letras legibles, sobre todo en el cuerpo del texto.</li></ul>
+FIGURE
+<h3>Imágenes</h3><ul><li>Sube las tuyas desde Subidos o busca fotos en la biblioteca.</li><li>Arrastra la imagen sobre un marco para recortarla con forma.</li><li>Puedes ajustar brillo, contraste y aplicar filtros básicos.</li><li>Usa solo imágenes que tengas derecho a utilizar.</li></ul>
+<h3>Elementos</h3><p>Selecciona un elemento para cambiar su color, tamaño y posición. Con la herramienta de capas puedes enviarlo adelante o atrás. Al arrastrar, aparecen guías que ayudan a alinear.</p>
+<div class="ex"><b>Ejemplo práctico</b>Para una publicación de consejos: título de 60 pt, tres frases de 24 pt y un ícono. Si todo es del mismo tamaño, nada destaca.</div>
+<h3>Actividad práctica</h3><p>Edita una plantilla: cambia el título, reemplaza una imagen y modifica dos colores.</p>`},
+{t:"Diseño de presentaciones",f:"slide",h:`<h3>Estructura recomendada</h3><ol><li>Portada con título y tu nombre.</li><li>Objetivo o tema.</li><li>Desarrollo: una idea por diapositiva.</li><li>Conclusión.</li><li>Cierre con datos de contacto o agradecimiento.</li></ol>
+FIGURE
+<h3>Buenas prácticas</h3><ul><li>Pocas palabras: frases cortas, no párrafos.</li><li>Una imagen o ícono por idea.</li><li>Misma tipografía y colores en todas las diapositivas.</li><li>Letra grande, que se lea desde lejos.</li></ul>
+<h3>Cómo agregar y ordenar páginas</h3><p>Usa el botón de agregar página para crear otra diapositiva. Puedes duplicarla para mantener el mismo estilo y arrastrar las miniaturas para reordenarlas. Canva también ofrece modo de presentación para proyectarla.</p>
+<div class="ex"><b>Ejemplo práctico</b>Presentación de “Mi emprendimiento” en 5 diapositivas: portada, problema, producto, precios y contacto.</div>`},
+{t:"Creación de publicaciones para redes sociales",h:`<h3>Antes de diseñar</h3><p>Define tres cosas: ¿para qué red es?, ¿qué quieres comunicar? y ¿qué acción esperas (guardar, comentar, escribir)?</p>
+<h3>Consejos</h3><ul><li>Elige el formato de la red: cuadrado, vertical o historia.</li><li>El mensaje principal debe leerse en dos segundos.</li><li>Mantén los mismos colores y tipografías para que reconozcan tu marca.</li><li>Deja margen en los bordes; algunas redes recortan los extremos.</li><li>Añade tu nombre de usuario de forma discreta.</li></ul>
+<div class="ex"><b>Ejemplo práctico</b>Serie de 3 publicaciones para una tienda de ropa: “Oferta”, “Nuevo” y “Consejo de estilo”, con los mismos colores y la misma letra.</div>
+<h3>Actividad práctica</h3><p>Crea una publicación con un título, una frase de apoyo, una imagen y tu usuario.</p>`},
+{t:"Descargar y compartir diseños",q:"m9",h:`<h3>Descargar</h3><ol><li>Pulsa Compartir en la barra superior.</li><li>Elige Descargar.</li><li>Selecciona el tipo de archivo y las páginas.</li><li>Descarga y revisa el archivo.</li></ol>
+<h3>¿Qué formato elegir?</h3><ul><li><b>PNG:</b> imágenes nítidas para redes y pantallas.</li><li><b>JPG:</b> fotos y archivos más ligeros.</li><li><b>PDF:</b> documentos, informes e impresión.</li></ul>
+<p>Otros formatos pueden estar disponibles según tu cuenta.</p>
+<h3>Compartir</h3><p>También puedes crear un enlace para que otros vean tu diseño. Revisa los permisos: ver, comentar o editar. Antes de compartir públicamente, comprueba que no incluya datos personales.</p>
+<div class="ex"><b>Ejemplo práctico</b>Un currículum se envía en PDF para que no se desordene. Una publicación se sube a la red en PNG.</div>`},
+{t:"Proyecto final: crear un diseño completo",final:1,h:`<h3>El reto</h3><p>Elige uno de los tres proyectos que anotaste en la lección 1 y crea un diseño completo.</p>
+<h3>Requisitos</h3><ul><li>Formato adecuado para su uso.</li><li>Un título claro y texto legible.</li><li>Máximo tres colores y dos tipografías.</li><li>Al menos una imagen o elemento gráfico.</li><li>Descargado en PNG, JPG o PDF.</li></ul>
+<h3>Lista de revisión</h3><ol><li>¿Se entiende el mensaje en dos segundos?</li><li>¿Hay buen contraste?</li><li>¿Está alineado y con espacio libre?</li><li>¿Revisaste la ortografía?</li></ol>
+<div class="ex"><b>Ideas</b>Presentación de 5 diapositivas, publicación para redes, cartel de evento, invitación o currículum.</div>
+<h3>Evaluación final</h3><p>Responde este cuestionario. Necesitas al menos 3 de 4 respuestas correctas. Luego podrás generar tu certificado.</p>`,q:"fin"}
+];
+
+const Q={
+m3:[["¿Dónde cargas tus propias imágenes?",["Subidos","Deshacer","Compartir"],0],["¿Para qué sirve la barra de opciones?",["Para ver plantillas","Para ajustar lo que seleccionaste","Para descargar"],1]],
+m6:[["Para que un texto se lea bien, necesitas…",["Buen contraste","Muchos colores","Letra muy pequeña"],0],["¿Qué es la jerarquía en un diseño?",["Usar el mismo tamaño en todo","Destacar primero lo más importante","Llenar todo el espacio"],1]],
+m9:[["¿Qué formato conviene para un documento o informe?",["PDF","Ninguno","Solo capturas"],0],["Antes de compartir un enlace público, debes…",["Revisar permisos y datos personales","Nada","Borrar el diseño"],0]],
+fin:[["¿Cuántas tipografías se recomiendan como máximo?",["Una por línea","Dos","Seis"],1],["¿Qué haces con una plantilla?",["Reemplazar textos, imágenes y colores","Nada, se usa igual","Solo imprimirla"],0],["¿Qué formato es mejor para publicar una imagen nítida en redes?",["PNG","TXT","ZIP"],0],["Un buen diseño tiene…",["Espacio libre y mensaje claro","Todo lleno de texto","Muchos efectos"],1]]
+};
+
+/* ---------- Estado (almacenamiento opcional, con protección) ---------- */
+let st={cur:0,done:[],quiz:{}};
+try{const s=localStorage.getItem("tecnovara-canva");if(s)st=JSON.parse(s)}catch(e){}
+const save=()=>{try{localStorage.setItem("tecnovara-canva",JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+
+function menu(){
+  $("menu").innerHTML=L.map((l,i)=>`<li class="${st.done.includes(i)?"done":""}"><button data-i="${i}" ${i===st.cur?'aria-current="true"':""}><span class="n">${i+1}.</span><span>${l.t}</span></button></li>`).join("");
+  const p=Math.round(st.done.length/L.length*100);
+  $("pbar").firstElementChild.style.width=p+"%";$("pbar").setAttribute("aria-valuenow",p);
+  $("ptxt").textContent=st.done.length+" de "+L.length+" lecciones completadas";
+}
+function render(){
+  const l=L[st.cur];let body=l.h.replace("FIGURE",l.f?FIG[l.f]:"");
+  if(l.f&&!l.h.includes("FIGURE"))body+=FIG[l.f];
+  let q="";
+  if(l.q){const qs=Q[l.q],r=st.quiz[l.q];
+    q=`<div class="quiz"><h3>${l.final?"Evaluación final":"Cuestionario del módulo"}</h3>`+qs.map((x,i)=>`<div class="q"><p>${i+1}. ${x[0]}</p>${x[1].map((o,j)=>`<label><input type="radio" name="${l.q}${i}" value="${j}"> ${o}</label>`).join("")}</div>`).join("")+`<button class="btn" id="chk">Comprobar respuestas</button><div class="fb" id="fb" aria-live="polite">${r?r.msg:""}</div></div>`}
+  const cert=l.final?`<div id="certbox"></div>`:"";
+  $("lesson").innerHTML=`<h2>${st.cur+1}. ${l.t}</h2>${body}${q}${cert}<div class="nav2"><button class="btn alt" id="prev" ${st.cur?"":"disabled"}>Anterior</button><button class="btn" id="next">${st.cur<L.length-1?"Completar y seguir":"Completar lección"}</button></div>`;
+  if(l.final)certUI();
+  menu();save();
+}
+function certUI(){
+  const ok=st.done.filter(i=>i<L.length-1).length===L.length-1&&st.quiz.fin&&st.quiz.fin.pass;
+  $("certbox").innerHTML=ok?`<div class="quiz"><h3>¡Felicidades! Ya puedes obtener tu certificado</h3><p>Escribe tu nombre:</p><input type="text" id="nm" aria-label="Tu nombre completo" placeholder="Nombre y apellido"> <button class="btn" id="mk">Generar certificado</button><div id="out"></div></div>`:`<div class="note">Para obtener el certificado debes completar las lecciones 1 a 9 y aprobar la evaluación final.</div>`;
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.i){st.cur=+b.dataset.i;render();$("lesson").focus();return}
+  if(b.id==="start"){$("course").scrollIntoView();return}
+  if(b.id==="prev"){st.cur--;render();$("lesson").focus()}
+  if(b.id==="next"){if(!st.done.includes(st.cur))st.done.push(st.cur);if(st.cur<L.length-1)st.cur++;render();$("lesson").scrollIntoView();$("lesson").focus()}
+  if(b.id==="chk"){const k=L[st.cur].q,qs=Q[k];let n=0,miss=0;
+    qs.forEach((x,i)=>{const s=document.querySelector(`input[name="${k}${i}"]:checked`);if(!s)miss++;else if(+s.value===x[2])n++});
+    if(miss){$("fb").innerHTML='<span class="bad">Responde todas las preguntas.</span>';return}
+    const need=k==="fin"?3:qs.length-(qs.length>2?1:0),pass=n>=need;
+    const msg=`<span class="${pass?"ok":"bad"}">Acertaste ${n} de ${qs.length}. ${pass?"¡Aprobado!":"Repasa la lección e inténtalo de nuevo."}</span>`;
+    st.quiz[k]={pass,msg};$("fb").innerHTML=msg;save();if(L[st.cur].final)certUI()}
+  if(b.id==="mk"){const n=$("nm").value.trim();if(!n){$("nm").focus();return}
+    const d=new Date().toLocaleDateString("es-CL",{day:"numeric",month:"long",year:"numeric"});
+    $("out").innerHTML=`<div class="cert"><div class="brand">TECNOVARA</div><h3>Certificado de finalización</h3><p>Se certifica que</p><div class="nm"></div><p>completó el Curso de Canva (Diseño digital · Nivel principiante)</p><p>${d}</p></div><button class="btn alt" onclick="window.print()" style="margin-top:12px">Imprimir o guardar en PDF</button>`;
+    document.querySelector(".cert .nm").textContent=n}
+});
+render();
+</script>
+</body>
+</html>
