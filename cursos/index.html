@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursos · TECNOVARA</title>
+<meta name="description" content="Lista de cursos gratuitos de TECNOVARA, un proyecto de educación gratuita creado por un estudiante.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#f4f6fb;--surf:#fff;--ink:#14213d;--mut:#4d5a78;--line:#d9dfec;--acc:#2f5bff;--acc2:#ffc93c;--onacc:#fff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1730;--surf:#18223f;--ink:#eef1fa;--mut:#a9b4d0;--line:#2c3860;--acc:#7b97ff;--onacc:#0f1730}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 "Source Sans 3",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:3px}
+.top{border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.in{max-width:1000px;margin:auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.logo{font:700 22px "Bricolage Grotesque",sans-serif;color:var(--ink);text-decoration:none}.logo b{color:var(--acc)}
+.in nav{display:flex;gap:20px}
+.in nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:16px}
+.in nav a[aria-current=page]{color:var(--acc)}
+main{max-width:1000px;margin:auto;padding:48px 20px 60px}
+h1{font-size:clamp(2.4rem,7vw,4rem);letter-spacing:-.02em;margin-bottom:10px}
+.lead{color:var(--mut);max-width:56ch;margin:0 0 34px}
+.lista{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.curso{display:grid;grid-template-columns:1fr auto;gap:10px 24px;align-items:center;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:24px;text-decoration:none;color:var(--ink)}
+a.curso:hover{border-color:var(--acc)}
+.curso h2{font-size:1.6rem}
+.curso p{margin:6px 0 10px;color:var(--mut);max-width:62ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.tags li{border:1px solid var(--line);border-radius:999px;padding:2px 12px;font-size:15px;background:var(--bg)}
+.tags .free{background:var(--acc2);border-color:var(--acc2);color:#14213d;font-weight:600}
+.go{color:var(--onacc);background:var(--acc);border-radius:10px;padding:11px 20px;font-weight:600;white-space:nowrap}
+.curso.soon{border-style:dashed;background:transparent;color:var(--mut)}
+.curso.soon h2{color:var(--ink)}
+footer{max-width:1000px;margin:auto;padding:0 20px 40px;color:var(--mut);font-size:14px}
+@media(max-width:640px){.curso{grid-template-columns:1fr}.go{justify-self:start}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="in">
+    <a class="logo" href="/">TECNO<b>VARA</b></a>
+    <nav aria-label="Principal"><a href="/">Inicio</a><a href="/cursos/" aria-current="page">Cursos</a></nav>
+  </div>
+</header>
+
+<main>
+  <h1>Cursos</h1>
+  <p class="lead">Todos los cursos de TECNOVARA son gratuitos, autodidactas y tienen certificado de finalización sin costo.</p>
+
+  <ul class="lista">
+    <li>
+      <a class="curso" href="/cursodecanva/">
+        <div>
+          <h2>Curso de Canva</h2>
+          <p>Aprende a utilizar Canva desde cero y descubre cómo crear diseños atractivos para presentaciones, publicaciones, documentos y otros proyectos.</p>
+          <ul class="tags"><li>Diseño digital</li><li>Principiante</li><li>Autodidacta</li><li>10 lecciones</li><li class="free">100 % gratuito</li></ul>
+        </div>
+        <span class="go">Empezar curso</span>
+      </a>
+    </li>
+    <li>
+      <div class="curso soon">
+        <div>
+          <h2>Más cursos próximamente</h2>
+          <p>Estamos preparando nuevos cursos. Vuelve pronto.</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</main>
+
+<footer>TECNOVARA es un proyecto educativo independiente y no tiene ninguna alianza oficial con Canva ni con otras marcas mencionadas en sus cursos.</footer>
+</body>
+</html>
