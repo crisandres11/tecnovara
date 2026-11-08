@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curso de Gmail · TECNOVARA</title>
+<meta name="description" content="Curso gratuito de Gmail básico: aprende a enviar un correo electrónico paso a paso. Con certificado gratis de TECNOVARA.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#f4f6fb;--surf:#fff;--ink:#14213d;--mut:#4d5a78;--line:#d9dfec;--acc:#2f5bff;--acc2:#ffc93c;--ok:#0f8a5f;--bad:#c0392b}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1730;--surf:#18223f;--ink:#eef1fa;--mut:#a9b4d0;--line:#2c3860;--acc:#7b97ff;--ok:#4cd1a0;--bad:#ff8a7a}}
+*{box-sizing:border-box}
+html{scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Source Sans 3",system-ui,sans-serif;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.15;margin:0}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+header.hero{padding:48px 20px 36px;max-width:1100px;margin:auto}
+.brand{font:700 18px "Bricolage Grotesque",sans-serif;color:var(--acc)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.8rem);margin:18px 0 12px}
+.hero p{max-width:60ch;color:var(--mut);margin:0 0 18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tags span{background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:15px}
+.tags .free{background:var(--acc2);border-color:var(--acc2);color:#14213d;font-weight:600}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:12px 22px;font-weight:600}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .btn{color:#0f1730}}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.app{max-width:1100px;margin:20px auto 0;padding:0 20px 60px;display:grid;grid-template-columns:290px 1fr;gap:28px;align-items:start}
+nav.side{position:sticky;top:12px;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:16px}
+nav.side h2{font-size:1.05rem;margin-bottom:6px}
+.bar{height:8px;background:var(--line);border-radius:8px;overflow:hidden;margin:8px 0 12px}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+nav.side ol{list-style:none;margin:0;padding:0}
+nav.side li button{width:100%;text-align:left;background:none;border:0;color:var(--ink);padding:8px 10px;border-radius:8px;display:flex;gap:10px;font-size:15px;line-height:1.35}
+nav.side li button:hover{background:var(--bg)}
+nav.side li button[aria-current=true]{background:var(--acc);color:#fff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) nav.side li button[aria-current=true]{color:#0f1730}}
+nav.side .n{font-weight:700;min-width:1.4em}
+nav.side li.done .n::after{content:"✓";color:var(--ok);margin-left:2px}
+nav.side li button[aria-current=true] .n::after{color:inherit}
+main.lesson{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:30px;min-width:0}
+main h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:14px}
+main h3{font-size:1.2rem;margin:26px 0 8px}
+main p,main li{max-width:68ch}
+main ul,main ol{padding-left:22px}
+.ex{border-left:5px solid var(--acc2);background:var(--bg);padding:12px 16px;border-radius:0 10px 10px 0;margin:18px 0}
+.ex b{display:block}
+.note{border:1px dashed var(--mut);border-radius:10px;padding:10px 14px;font-size:15px;color:var(--mut);margin:18px 0}
+figure{margin:20px 0}
+figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:12px;display:block}
+figure svg{max-width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+figcaption{font-size:14px;color:var(--mut);margin-top:6px}
+.quiz{margin-top:30px;border-top:2px solid var(--line);padding-top:20px}
+.q{margin:16px 0}
+.q p{font-weight:600;margin:0 0 6px}
+.q label{display:block;padding:6px 10px;border-radius:8px;cursor:pointer}
+.q label:hover{background:var(--bg)}
+.fb{font-size:15px;margin-top:6px}
+.ok{color:var(--ok)}.bad{color:var(--bad)}
+.nav2{display:flex;justify-content:space-between;gap:10px;margin-top:30px;flex-wrap:wrap}
+.cert{border:3px double var(--acc);border-radius:14px;padding:30px;text-align:center;margin-top:20px}
+.cert h3{font-size:1.8rem}
+.cert .nm{font:700 2rem "Bricolage Grotesque",sans-serif;margin:12px 0}
+input[type=text]{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:min(100%,320px)}
+footer{max-width:1100px;margin:auto;padding:0 20px 40px;color:var(--mut);font-size:14px}
+@media(max-width:820px){.app{grid-template-columns:1fr}nav.side{position:static}main.lesson{padding:20px}}
+@media print{body *{visibility:hidden}.cert,.cert *{visibility:visible}.cert{position:absolute;left:0;top:0;width:100%}}
+
+.topbar{border-bottom:1px solid var(--line);background:var(--bg);padding-top:env(safe-area-inset-top,0px)}
+.topbar .in{max-width:1100px;margin:auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.topbar a{text-decoration:none;color:var(--ink);font-weight:600;font-size:15px}
+.topbar .brand{font:700 21px "Bricolage Grotesque",sans-serif;color:var(--ink)}
+.topbar .brand b{color:var(--acc)}
+.wrap{max-width:1100px;margin:auto;padding:0 20px}
+.hero2{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;padding:56px 20px 48px;max-width:1100px;margin:auto}
+.hero2 h1{font-size:clamp(2.6rem,7vw,4.6rem);letter-spacing:-.02em;margin:0 0 14px}
+.hero2 p{color:var(--mut);font-size:1.15rem;max-width:52ch;margin:0 0 22px}
+.ficha{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+.ficha dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 18px}
+.ficha dt{color:var(--mut);font-size:15px}
+.ficha dd{margin:0;font-weight:600}
+.ficha dd.free{background:var(--acc2);color:#14213d;display:inline-block;border-radius:6px;padding:0 10px;justify-self:start}
+.band{background:var(--surf);border-block:1px solid var(--line);padding:52px 0;margin-bottom:44px}
+.band h2,.info h2,.go h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:14px}
+.one{max-width:760px}.canva{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.canva img{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--line);background:var(--bg);min-height:120px}
+.canva p{margin:0 0 12px;max-width:58ch}
+.canva ul{padding-left:20px;margin:0 0 12px}
+.info{margin-bottom:44px}
+.info .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.info .col{border-top:3px solid var(--acc);padding-top:12px}
+.info h3{font-size:1.2rem;margin-bottom:6px}
+.info .col p,.info .col ul{margin:0;color:var(--mut)}
+.info .col ul{padding-left:18px}
+.go{max-width:1100px;margin:0 auto 18px;padding:0 20px}
+.go p{color:var(--mut);margin:0}
+@media(max-width:820px){.hero2,.canva{grid-template-columns:1fr}.hero2{padding-top:36px}}
+.heroside{display:grid;gap:16px}.heroimg{width:100%;height:auto;max-height:260px;object-fit:contain;display:block;border-radius:14px}
+.canva img{max-height:460px;object-fit:contain}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="in"><a class="brand" href="/">TECNO<b>VARA</b></a><a href="/cursos/">← Todos los cursos</a></div></div>
+
+<header class="hero2">
+  <div>
+    <h1>Curso de Gmail</h1>
+    <p>Gmail básico: aprende a enviar un correo electrónico paso a paso, desde abrir Gmail hasta presionar “Enviar”.</p>
+    <button class="btn" id="start">Empezar el curso</button>
+  </div>
+  <aside class="ficha" aria-label="Datos del curso">
+    <dl>
+      <dt>Categoría</dt><dd>Herramientas digitales</dd>
+      <dt>Nivel</dt><dd>Principiante</dd>
+      <dt>Precio</dt><dd class="free">100 % gratuito</dd>
+      <dt>Modalidad</dt><dd>Autodidacta</dd>
+      <dt>Lecciones</dt><dd>7</dd>
+      <dt>Certificado</dt><dd>Gratuito, emitido por TECNOVARA</dd>
+    </dl>
+  </aside>
+</header>
+
+<section class="band" aria-labelledby="que-es">
+  <div class="wrap one">
+    <h2 id="que-es">¿Qué es Gmail?</h2>
+    <p>Gmail es un servicio gratuito de correo electrónico de Google. El correo electrónico sirve para enviar y recibir mensajes por internet, como una carta digital que llega en segundos.</p>
+    <p>Para usarlo necesitas una cuenta de Google. Funciona desde el navegador del computador y también desde la app del celular.</p>
+    <p>Con Gmail puedes, por ejemplo, enviar fotos y tareas, comunicarte con profesores o compañeros, y recibir avisos de las páginas donde te registras.</p>
+  </div>
+</section>
+
+<section class="info wrap" aria-labelledby="como-se-aprende">
+  <h2 id="como-se-aprende">Cómo funciona el curso</h2>
+  <div class="cols">
+    <div class="col"><h3>Lecciones prácticas</h3><p>Cinco pasos sencillos, con imágenes y ejemplos, para enviar tu primer correo.</p></div>
+    <div class="col"><h3>Evaluación</h3><ul><li>Cuestionarios en algunas lecciones.</li><li>Actividad práctica.</li><li>Proyecto final: envía tu correo.</li></ul></div>
+    <div class="col"><h3>Certificado gratis</h3><p>Completa todas las lecciones y aprueba la evaluación final para obtener tu certificado de finalización.</p></div>
+  </div>
+</section>
+
+<div class="go"><h2>Empieza ahora</h2><p>Elige una lección en el menú o sigue el orden con el botón “Completar y seguir”.</p></div>
+
+
+<div class="app" id="course">
+  <nav class="side" aria-label="Lecciones del curso">
+    <h2>Programa</h2>
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="pbar"><i></i></div>
+    <div id="ptxt" style="font-size:14px;color:var(--mut)"></div>
+    <ol id="menu"></ol>
+  </nav>
+  <main class="lesson" id="lesson" tabindex="-1"></main>
+</div>
+
+<footer>
+  TECNOVARA es una plataforma educativa independiente y no tiene ninguna alianza oficial con Google ni con Gmail. Gmail es una marca de sus respectivos propietarios. Su interfaz cambia con el tiempo, por lo que los nombres de los botones pueden variar ligeramente.
+</footer>
+
+<script>
+/* ---------- Lecciones ---------- */
+const FIG={};
+const I=(src,alt)=>`<figure><img src="/assets/${src}" alt="${alt}" loading="lazy"></figure>`;
+const L=[
+{t:"Qué es Gmail y el correo electrónico",h:`<p>El correo electrónico (o email) es una forma de enviar mensajes por internet. Gmail es el servicio de correo gratuito de Google, y es uno de los más usados.</p>
+<h3>La dirección de correo</h3><p>Cada persona tiene una dirección única. Se ve así: <b>nombre@gmail.com</b>. El símbolo @ se llama arroba. Lo que va antes es el nombre de usuario; lo que va después es el servicio de correo.</p>
+<div class="ex"><b>Ejemplo práctico</b>La dirección ana.perez@gmail.com pertenece a una sola persona. Si escribes una letra distinta, el mensaje puede llegar a otro lugar.</div>
+<h3>¿Para qué sirve?</h3><ul><li>Enviar tareas, fotos y mensajes.</li><li>Escribirle a profesores, familiares o amigos.</li><li>Recibir avisos de las páginas donde te registras.</li></ul>
+<h3>Actividad</h3><p>Anota tu dirección de correo y la de una persona de confianza a quien le enviarás un mensaje en el proyecto final.</p>`},
+{t:"Paso 1: Busca Gmail en tu navegador",h:`<p>El navegador es el programa que usas para entrar a internet, como Chrome, Edge, Firefox o Safari. Usa el que prefieras.</p>
+<ol><li>Abre tu navegador preferido.</li><li>En la barra de búsqueda escribe <b>Gmail</b>.</li><li>Abre el resultado oficial de Google.</li></ol>
+${I("Gmail1.png","Buscar Gmail en el navegador")}
+<div class="note">Cuidado con las páginas falsas: la dirección oficial pertenece a google.com (por ejemplo, mail.google.com). Si algo te parece raro, no escribas tu contraseña.</div>
+<div class="ex"><b>Ejemplo práctico</b>Si usas Chrome, escribes “Gmail” en la barra, presionas Enter y abres el primer resultado de Google.</div>`},
+{t:"Paso 2: Entra a Gmail y presiona “Redactar”",h:`<p>Ahora entra con tu cuenta.</p>
+<ol><li>Escribe tu correo electrónico y sigue los pasos que te pide Google, como poner tu contraseña.</li><li>Cuando se abra tu bandeja de entrada, busca el botón <b>Redactar</b> y presiónalo.</li></ol>
+${I("Gmail2.png","Pantalla de Gmail con el botón Redactar")}
+<p>Se abrirá una ventana para escribir un mensaje nuevo.</p>
+<h3>Seguridad</h3><ul><li>Nunca compartas tu contraseña.</li><li>Si usas un computador que no es tuyo, cierra tu sesión al terminar.</li></ul>
+<div class="note">Gmail puede cambiar la posición o el aspecto del botón. Busca el que dice “Redactar”.</div>`},
+{t:"Paso 3: Destinatario y asunto",q:"m4",h:`<h3>Destinatario</h3><p>En el campo del destinatario (suele aparecer como “Para”) escribe el correo electrónico de la persona que quieres que reciba el mensaje. Revísalo con calma: una letra equivocada y el correo no llegará a la persona correcta.</p>
+<h3>Asunto</h3><p>El asunto es el título corto del correo. Le dice a la persona de qué trata antes de abrirlo.</p>
+<ul><li><b>Bueno:</b> Fotos de fiesta 2026.</li><li><b>Bueno:</b> Tarea de ciencias.</li><li><b>Poco claro:</b> Hola, o dejarlo vacío.</li></ul>
+${I("Gmail3.png","Escribir el destinatario y el asunto")}
+<div class="ex"><b>Ejemplo práctico</b>Para: ana.perez@gmail.com<br>Asunto: Fotos de fiesta 2026</div>`},
+{t:"Paso 4: Redacta tu mensaje",h:`<p>Debajo del asunto está el espacio grande para escribir el mensaje. Puedes hacerlo de manera informal o formal, según con quién hables.</p>
+${I("Gmail4.png","Redactar el mensaje en Gmail")}
+<h3>Informal (amigos y familia)</h3><div class="ex">¡Hola Ana! Te mando las fotos de la fiesta. ¡Estuvo genial! Un abrazo, Cris.</div>
+<h3>Formal (profesores, trabajo)</h3><div class="ex">Estimada profesora Rojas: Le escribo para consultarle la fecha de entrega de la tarea. Muchas gracias. Saludos cordiales, Cristóbal.</div>
+<h3>Una estructura simple</h3><ol><li>Saludo.</li><li>El mensaje, claro y corto.</li><li>Despedida.</li><li>Tu nombre.</li></ol>
+<p>Antes de seguir, lee tu mensaje y revisa la ortografía.</p>`},
+{t:"Paso 5: Envía el correo",q:"m6",h:`<p>Ya casi terminas. Antes de enviar, revisa esta lista:</p>
+<ul><li>¿El correo del destinatario está bien escrito?</li><li>¿El asunto dice de qué trata?</li><li>¿El mensaje se entiende y no tiene errores?</li></ul>
+<p>Cuando todo esté bien, presiona <b>Enviar</b>. El correo llegará a la persona destinataria.</p>
+<h3>Después de enviar</h3><ul><li>Gmail suele mostrar un aviso de que el mensaje se envió.</li><li>Puedes encontrarlo en la carpeta <b>Enviados</b>.</li><li>Si no estás listo para enviarlo, Gmail guarda lo que escribes como borrador.</li></ul>
+<div class="ex"><b>Ejemplo práctico</b>Escribiste a Ana, revisaste su correo, pusiste el asunto “Fotos de fiesta 2026” y presionaste Enviar. Después revisas la carpeta Enviados para comprobar que está ahí.</div>`},
+{t:"Proyecto final: envía tu correo",final:1,q:"fin",h:`<h3>El reto</h3><p>Envía un correo real siguiendo los cinco pasos.</p>
+<h3>Instrucciones</h3><ol><li>Busca Gmail en tu navegador.</li><li>Entra y presiona Redactar.</li><li>Escribe el destinatario: puedes usar tu propio correo o el de una persona de confianza.</li><li>Pon un asunto claro, por ejemplo “Prueba de TECNOVARA”.</li><li>Escribe un mensaje con saludo, texto, despedida y tu nombre.</li><li>Presiona Enviar y revisa la carpeta Enviados.</li></ol>
+<div class="note">Envía correos solo a personas que conoces. Si eres menor de edad, pide a un adulto que te acompañe.</div>
+<h3>Evaluación final</h3><p>Responde este cuestionario. Necesitas al menos 3 de 4 respuestas correctas. Al terminar, irás a tu logro y podrás generar tu certificado.</p>`}
+];
+
+const Q={
+m4:[["¿Qué debe ir en el asunto de un correo?",["El título corto de lo que trata","Tu contraseña","Nada, siempre se deja vacío"],0],["¿Por qué debes revisar el correo del destinatario?",["Para que llegue a la persona correcta","Para cambiar el color","No hace falta revisarlo"],0]],
+m6:[["¿Qué botón presionas para mandar el mensaje?",["Enviar","Redactar","Cerrar sesión"],0],["¿Dónde puedes ver los correos que ya mandaste?",["En Enviados","En el navegador","En el teclado"],0]],
+fin:[["¿Cuál es el primer paso para enviar un correo?",["Buscar Gmail en el navegador","Presionar Enviar","Escribir el asunto"],0],["¿Qué botón usas para crear un mensaje nuevo?",["Redactar","Enviar","Ayuda"],0],["¿Cuál es un buen asunto?",["Fotos de fiesta 2026","Hola","(vacío)"],0],["¿Qué haces si usas un computador que no es tuyo?",["Cerrar la sesión al terminar","Dejar la cuenta abierta","Compartir la contraseña"],0]]
+};
+
+/* ---------- Estado (almacenamiento opcional, con protección) ---------- */
+let st={cur:0,done:[],quiz:{}};
+try{const s=localStorage.getItem("tecnovara-gmail");if(s)st=JSON.parse(s)}catch(e){}
+const save=()=>{try{localStorage.setItem("tecnovara-gmail",JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+
+function menu(){
+  $("menu").innerHTML=L.map((l,i)=>`<li class="${st.done.includes(i)?"done":""}"><button data-i="${i}" ${i===st.cur?'aria-current="true"':""}><span class="n">${i+1}.</span><span>${l.t}</span></button></li>`).join("");
+  const p=Math.round(st.done.length/L.length*100);
+  $("pbar").firstElementChild.style.width=p+"%";$("pbar").setAttribute("aria-valuenow",p);
+  $("ptxt").textContent=st.done.length+" de "+L.length+" lecciones completadas";
+}
+function render(){
+  const l=L[st.cur];let body=l.h.replace("FIGURE",l.f?FIG[l.f]:"");
+  if(l.f&&!l.h.includes("FIGURE"))body+=FIG[l.f];
+  let q="";
+  if(l.q){const qs=Q[l.q],r=st.quiz[l.q];
+    q=`<div class="quiz"><h3>${l.final?"Evaluación final":"Cuestionario del módulo"}</h3>`+qs.map((x,i)=>`<div class="q"><p>${i+1}. ${x[0]}</p>${x[1].map((o,j)=>`<label><input type="radio" name="${l.q}${i}" value="${j}"> ${o}</label>`).join("")}</div>`).join("")+`<button class="btn" id="chk">Comprobar respuestas</button><div class="fb" id="fb" aria-live="polite">${r?r.msg:""}</div></div>`}
+  const cert=l.final?`<div id="certbox"></div>`:"";
+  $("lesson").innerHTML=`<h2>${st.cur+1}. ${l.t}</h2>${body}${q}${cert}<div class="nav2"><button class="btn alt" id="prev" ${st.cur?"":"disabled"}>Anterior</button><button class="btn" id="next">${st.cur<L.length-1?"Completar y seguir":"Completar lección"}</button></div>`;
+  if(l.final)certUI();
+  menu();save();
+}
+function ready(){return L.slice(0,-1).every((_,i)=>st.done.includes(i))&&st.quiz.fin&&st.quiz.fin.pass}
+function certUI(){
+  $("certbox").innerHTML=ready()?`<div class="note" aria-live="polite">Cumples todos los requisitos. Pulsa «Completar lección» para ir a tu logro y obtener tu certificado.</div>`:`<div class="note" aria-live="polite">Para terminar el curso debes completar las lecciones 1 a 9 y aprobar la evaluación final.</div>`;
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.i){st.cur=+b.dataset.i;render();$("lesson").focus();return}
+  if(b.id==="start"){$("course").scrollIntoView();return}
+  if(b.id==="prev"){st.cur--;render();$("lesson").focus()}
+  if(b.id==="next"){if(!st.done.includes(st.cur))st.done.push(st.cur);save();if(st.cur===L.length-1){if(ready()){location.href="/cursodegmail/logrado/";return}render();return}st.cur++;render();$("lesson").scrollIntoView();$("lesson").focus()}
+  if(b.id==="chk"){const k=L[st.cur].q,qs=Q[k];let n=0,miss=0;
+    qs.forEach((x,i)=>{const s=document.querySelector(`input[name="${k}${i}"]:checked`);if(!s)miss++;else if(+s.value===x[2])n++});
+    if(miss){$("fb").innerHTML='<span class="bad">Responde todas las preguntas.</span>';return}
+    const need=k==="fin"?3:qs.length-(qs.length>2?1:0),pass=n>=need;
+    const msg=`<span class="${pass?"ok":"bad"}">Acertaste ${n} de ${qs.length}. ${pass?"¡Aprobado!":"Repasa la lección e inténtalo de nuevo."}</span>`;
+    st.quiz[k]={pass,msg};$("fb").innerHTML=msg;save();if(L[st.cur].final)certUI()}
+});
+render();
+</script>
+</body>
+</html>
