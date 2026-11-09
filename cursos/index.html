@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cursos · TECNOVARA</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2f5bff">
 <meta name="description" content="Lista de cursos gratuitos de TECNOVARA, un proyecto de educación gratuita creado por un estudiante.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
@@ -36,6 +38,7 @@ a.curso:hover{border-color:var(--acc)}
 .curso.soon{border-style:dashed;background:transparent;color:var(--mut)}
 .curso.soon h2{color:var(--ink)}
 footer{max-width:1000px;margin:auto;padding:0 20px 40px;color:var(--mut);font-size:14px}
+.prog{margin-top:12px;font-size:15px;color:var(--mut)}.prog .bar{height:8px;background:var(--line);border-radius:8px;overflow:hidden;max-width:320px;margin-bottom:4px}.prog .bar i{display:block;height:100%;background:#0f8a5f}
 @media(max-width:640px){.curso{grid-template-columns:1fr}.go{justify-self:start}}
 </style>
 </head>
@@ -53,41 +56,56 @@ footer{max-width:1000px;margin:auto;padding:0 20px 40px;color:var(--mut);font-si
 
   <ul class="lista">
     <li>
-      <a class="curso" href="/cursodecanva/">
+      <a class="curso" href="/cursodecanva/" data-key="tecnovara-canva" data-total="10">
         <div>
-          <h2>Curso de Canva</h2>
+          <h2>Curso de Canva (Parte 1): Crea tus diseños</h2>
           <p>Aprende a utilizar Canva desde cero y descubre cómo crear diseños atractivos para presentaciones, publicaciones, documentos y otros proyectos.</p>
           <ul class="tags"><li>Diseño digital</li><li>Principiante</li><li>Autodidacta</li><li>10 lecciones</li><li class="free">100 % gratuito</li></ul>
+          <div class="prog" aria-live="polite"></div>
         </div>
         <span class="go">Empezar curso</span>
       </a>
     </li>
     <li>
-      <a class="curso" href="/cursodegmail/">
+      <a class="curso" href="/cursodecanva/parte2/" data-key="tecnovara-canva2" data-total="6">
+        <div>
+          <h2>Curso de Canva (Parte 2): Cómo invitar a alguien a mi proyecto</h2>
+          <p>Aprende a compartir tu diseño de Canva con otras personas para trabajar juntos, paso a paso.</p>
+          <ul class="tags"><li>Diseño digital</li><li>Principiante</li><li>Autodidacta</li><li>6 lecciones</li><li class="free">100 % gratuito</li></ul>
+          <div class="prog" aria-live="polite"></div>
+        </div>
+        <span class="go">Empezar curso</span>
+      </a>
+    </li>
+    <li>
+      <a class="curso" href="/cursodegmail/" data-key="tecnovara-gmail" data-total="7">
         <div>
           <h2>Curso de Gmail (Parte 1): Cómo enviar un correo</h2>
           <p>Gmail básico: aprende a enviar un correo electrónico paso a paso, desde abrir Gmail hasta presionar “Enviar”.</p>
           <ul class="tags"><li>Herramientas digitales</li><li>Principiante</li><li>Autodidacta</li><li>7 lecciones</li><li class="free">100 % gratuito</li></ul>
+          <div class="prog" aria-live="polite"></div>
         </div>
         <span class="go">Empezar curso</span>
       </a>
     </li>
     <li>
-      <a class="curso" href="/cursodegmail/parte2/">
+      <a class="curso" href="/cursodegmail/parte2/" data-key="tecnovara-gmail2" data-total="6">
         <div>
           <h2>Curso de Gmail (Parte 2): Cómo ingresar con tu correo</h2>
           <p>Aprende a entrar a tu cuenta de Gmail paso a paso, usando tu correo electrónico y tu contraseña de forma segura.</p>
           <ul class="tags"><li>Herramientas digitales</li><li>Principiante</li><li>Autodidacta</li><li>6 lecciones</li><li class="free">100 % gratuito</li></ul>
+          <div class="prog" aria-live="polite"></div>
         </div>
         <span class="go">Empezar curso</span>
       </a>
     </li>
     <li>
-      <a class="curso" href="/cursodegoogleforms/">
+      <a class="curso" href="/cursodegoogleforms/" data-key="tecnovara-forms" data-total="8">
         <div>
           <h2>Curso de Google Forms: Cómo hacer un formulario</h2>
           <p>Aprende a crear un formulario paso a paso y a compartir el enlace para que otras personas lo respondan.</p>
           <ul class="tags"><li>Herramientas digitales</li><li>Principiante</li><li>Autodidacta</li><li>8 lecciones</li><li class="free">100 % gratuito</li></ul>
+          <div class="prog" aria-live="polite"></div>
         </div>
         <span class="go">Empezar curso</span>
       </a>
@@ -104,5 +122,21 @@ footer{max-width:1000px;margin:auto;padding:0 20px 40px;color:var(--mut);font-si
 </main>
 
 <footer>TECNOVARA es un proyecto educativo independiente y no tiene ninguna alianza oficial con Canva ni con Google ni con otras marcas mencionadas en sus cursos.</footer>
+<script>
+document.querySelectorAll("a.curso[data-key]").forEach(function(a){
+  try{
+    var st=JSON.parse(localStorage.getItem(a.dataset.key)||"null");
+    if(!st||!Array.isArray(st.done)||!st.done.length)return;
+    var total=+a.dataset.total,n=Math.min(st.done.length,total);
+    var ok=n>=total&&st.quiz&&st.quiz.fin&&st.quiz.fin.pass;
+    var p=a.querySelector(".prog"),bar=document.createElement("div"),i=document.createElement("i"),t=document.createElement("span");
+    bar.className="bar";i.style.width=Math.round(n/total*100)+"%";bar.appendChild(i);
+    t.textContent=n+" de "+total+" lecciones"+(ok?" · ✓ Completado":"");
+    p.appendChild(bar);p.appendChild(t);
+    a.querySelector(".go").textContent=ok?"Repasar curso":"Continuar curso";
+  }catch(e){}
+});
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}</script>
 </body>
 </html>
