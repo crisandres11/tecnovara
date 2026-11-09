@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salón de clases · TECNOVARA</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#f4f6fb;--surf:#fff;--ink:#14213d;--mut:#4d5a78;--line:#d9dfec;--acc:#2f5bff;--acc2:#ffc93c;--onacc:#fff;--ok:#0f8a5f;--bad:#c0392b}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1730;--surf:#18223f;--ink:#eef1fa;--mut:#a9b4d0;--line:#2c3860;--acc:#7b97ff;--onacc:#0f1730;--ok:#4cd1a0;--bad:#ff8a7a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 "Source Sans 3",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.15;margin:0}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+.top{border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.in{max-width:900px;margin:auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:inline-flex;align-items:center;gap:10px;font:700 21px "Bricolage Grotesque",sans-serif;color:var(--ink);text-decoration:none}
+.logo img{width:28px;height:28px;border-radius:6px}.logo b{color:var(--acc)}
+.in a.b{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+main{max-width:900px;margin:auto;padding:34px 20px 60px}
+h1{font-size:clamp(2rem,6vw,3.2rem);letter-spacing:-.02em;margin-bottom:8px}
+h2{font-size:1.4rem;margin-bottom:10px}
+.mut{color:var(--mut)}
+.demo{border:1px dashed var(--mut);border-radius:10px;padding:10px 14px;font-size:15px;color:var(--mut);margin-bottom:20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin:24px 0}
+.card{text-align:left;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:24px;color:var(--ink);font:inherit;cursor:pointer}
+.card:hover{border-color:var(--acc)}
+.card p{margin:6px 0 0;color:var(--mut)}
+.box{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:20px}
+label{display:block;font-weight:600;margin:12px 0 4px}
+input[type=text],input[type=number],textarea,select{font:inherit;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+textarea{min-height:80px;resize:vertical}
+.btn{display:inline-block;background:var(--acc);color:var(--onacc);font:600 17px "Source Sans 3",sans-serif;border:0;border-radius:10px;padding:12px 22px;cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.sm{padding:6px 14px;font-size:15px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.err{color:var(--bad);font-weight:600;margin-top:10px}
+.bar2{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.code{font:700 clamp(2.6rem,9vw,4.5rem) "Bricolage Grotesque",sans-serif;letter-spacing:.12em;line-height:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:2px 14px;font-size:16px}
+.q{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+.q:first-child{border-top:0;margin-top:0;padding-top:0}
+.badge{background:var(--acc2);color:#14213d;border-radius:6px;padding:0 8px;font-size:14px;font-weight:600;margin-left:8px}
+.res{margin:8px 0}
+.res .t{display:flex;justify-content:space-between;font-size:16px}
+.res .bar{height:10px;background:var(--line);border-radius:8px;overflow:hidden}
+.res .bar i{display:block;height:100%;background:var(--acc)}
+.opt{display:block;padding:10px 14px;border:1px solid var(--line);border-radius:10px;margin:8px 0;cursor:pointer;background:var(--bg)}
+.big{font-size:1.2rem;padding:14px 26px}
+#net{color:var(--bad);font-size:14px}
+.ok{color:var(--ok);font-weight:600}
+.opts input{margin-bottom:8px}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="logo" href="/"><img src="/favicon.ico" alt=""><span>TECNO<b>VARA</b></span></a>
+  <a class="b" href="/">← Inicio</a>
+</div></header>
+<main>
+  <div id="demo" class="demo" hidden>Modo de prueba: aún no hay una base de datos conectada, así que el salón solo funciona entre pestañas de este mismo navegador. Para usarlo con otros dispositivos, completa <code>config.js</code>.</div>
+  <div id="net" hidden role="status">Sin conexión. Reintentando…</div>
+  <div id="app"></div>
+</main>
+<noscript><p style="padding:20px">Necesitas activar JavaScript para usar el salón de clases.</p></noscript>
+<script src="config.js"></script>
+<script>
+(function(){
+"use strict";
+var COURSES=[["Curso de Canva","/cursodecanva/"],["Curso de Gmail (Parte 1)","/cursodegmail/"],["Curso de Gmail (Parte 2)","/cursodegmail/parte2/"],["Curso de Google Forms","/cursodegoogleforms/"]];
+var CFG=(window.TECNOVARA_DB||"").replace(/\/$/,""),DEMO=!CFG;
+var $=function(id){return document.getElementById(id)};
+var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+var vals=function(o){return o?Object.keys(o).map(function(k){return o[k]}):[]};
+var timer=null,refreshNow=null;
+function stop(){clearInterval(timer);timer=null;refreshNow=null}
+function poll(fn){stop();var run=function(){Promise.resolve().then(fn).then(function(){$("net").hidden=true}).catch(function(){$("net").hidden=false})};refreshNow=run;run();timer=setInterval(run,2000)}
+function show(h){$("app").innerHTML=h}
+if(DEMO)$("demo").hidden=false;
+
+/* ---------- Base de datos (remota o de prueba) ---------- */
+function root(){try{return JSON.parse(localStorage.getItem("tvroot")||"{}")}catch(e){return{}}}
+var db={
+  get:function(p){
+    if(DEMO){var o=root();p.split("/").forEach(function(k){o=(o==null)?null:o[k]});return Promise.resolve(o===undefined?null:o)}
+    return fetch(CFG+"/"+p+".json").then(function(r){if(!r.ok)throw new Error(r.status);return r.json()});
+  },
+  set:function(p,v){
+    if(DEMO){var r=root(),ks=p.split("/"),o=r;for(var i=0;i<ks.length-1;i++){o[ks[i]]=o[ks[i]]||{};o=o[ks[i]]}
+      if(v===null)delete o[ks[ks.length-1]];else o[ks[ks.length-1]]=v;localStorage.setItem("tvroot",JSON.stringify(r));return Promise.resolve()}
+    return fetch(CFG+"/"+p+".json",{method:"PUT",body:JSON.stringify(v)}).then(function(r){if(!r.ok)throw new Error(r.status)});
+  }
+};
+
+/* ---------- Inicio ---------- */
+function home(){
+  stop();
+  var pr=null;try{pr=JSON.parse(localStorage.getItem("tvprof")||"null")}catch(e){}
+  show('<h1>Salón de clases</h1><p class="mut">El profesor crea una sala, los estudiantes entran con un código y responden sus preguntas. Al final, el profesor los envía al curso asignado.</p>'
+   +'<div class="cards"><button class="card" id="bP"><h2>Soy profesor</h2><p>Crea una sala y haz preguntas.</p></button><button class="card" id="bE"><h2>Soy estudiante</h2><p>Entra con el código de tu profesor.</p></button></div>'
+   +(pr?'<p><button class="btn alt" id="bC">Continuar mi sala '+esc(pr.code)+'</button></p>':''));
+  $("bP").onclick=profCrear;$("bE").onclick=estUnir;
+  if(pr)$("bC").onclick=function(){db.get("salas/"+pr.code).then(function(r){if(r)panel(pr.code,pr.nombre);else{localStorage.removeItem("tvprof");home()}}).catch(function(){$("net").hidden=false})};
+}
+
+/* ---------- Profesor ---------- */
+function profCrear(){
+  show('<h1>Crear salón</h1><div class="box"><label for="pn">Tu nombre</label><input type="text" id="pn" maxlength="40" placeholder="Ej.: Profesora Ana"><div class="row"><button class="btn" id="go">Crear salón</button><button class="btn alt" id="bk">Volver</button></div><div class="err" id="e"></div></div>');
+  $("bk").onclick=home;
+  $("go").onclick=function(){
+    var nombre=$("pn").value.trim();if(!nombre){$("e").textContent="Escribe tu nombre.";return}
+    $("go").disabled=true;
+    var intentos=0;
+    (function probar(){
+      var code=String(10000+Math.floor(Math.random()*90000));
+      db.get("salas/"+code).then(function(r){
+        if(r){if(++intentos<8)return probar();throw new Error("ocupado")}
+        return db.set("salas/"+code,{profesor:nombre,creada:Date.now(),estado:"abierta",activa:"",curso:""}).then(function(){
+          localStorage.setItem("tvprof",JSON.stringify({code:code,nombre:nombre}));panel(code,nombre)});
+      }).catch(function(){$("go").disabled=false;$("e").textContent="No se pudo crear la sala. Revisa tu conexión."});
+    })();
+  };
+}
+function panel(code,nombre){
+  var cursoOpts='<option value="">Sin curso asignado</option>'+COURSES.map(function(c){return'<option value="'+c[1]+'">'+esc(c[0])+'</option>'}).join("");
+  show('<div class="bar2"><div><span class="mut">Código de la sala</span><div class="code">'+esc(code)+'</div></div><div class="mut">Profesor: '+esc(nombre)+'<br>Comparte este código con tus estudiantes.</div></div>'
+   +'<div class="box"><h2>Estudiantes (<span id="nEst">0</span>)</h2><div class="chips" id="alumnos"><span class="mut">Aún no entra nadie.</span></div></div>'
+   +'<div class="box"><h2>Nueva pregunta</h2><label for="qt">Pregunta</label><textarea id="qt" maxlength="200"></textarea>'
+   +'<label for="qk">Tipo de respuesta</label><select id="qk"><option value="op">Opción múltiple</option><option value="ab">Respuesta abierta</option></select>'
+   +'<div id="ops" class="opts"><label>Opciones (mínimo 2)</label><input type="text" id="o0" maxlength="60" placeholder="Opción 1"><input type="text" id="o1" maxlength="60" placeholder="Opción 2"><input type="text" id="o2" maxlength="60" placeholder="Opción 3 (opcional)"><input type="text" id="o3" maxlength="60" placeholder="Opción 4 (opcional)"></div>'
+   +'<div class="row"><button class="btn" id="lanzar">Crear y lanzar pregunta</button></div><div class="err" id="qe"></div></div>'
+   +'<div class="box"><h2>Preguntas</h2><div id="preguntas"><p class="mut">Aún no hay preguntas.</p></div></div>'
+   +'<div class="box"><h2>Curso asignado</h2><p class="mut">Cuando termines, tus estudiantes serán enviados a este curso.</p><select id="curso" aria-label="Curso asignado">'+cursoOpts+'</select>'
+   +'<div class="row"><button class="btn big" id="fin" disabled>Terminado, ir a curso asignado</button></div><p id="finmsg" class="ok"></p></div>'
+   +'<p><button class="btn alt sm" id="cerrar">Cerrar y borrar sala</button> <button class="btn alt sm" id="salir">Salir (dejar la sala abierta)</button></p>');
+  var base="salas/"+code;
+  $("qk").onchange=function(){$("ops").hidden=$("qk").value!=="op"};
+  $("lanzar").onclick=function(){
+    var t=$("qt").value.trim(),k=$("qk").value,ops={};
+    if(!t){$("qe").textContent="Escribe la pregunta.";return}
+    if(k==="op"){for(var i=0;i<4;i++){var v=$("o"+i).value.trim();if(v)ops["o"+i]=v}
+      if(Object.keys(ops).length<2){$("qe").textContent="Escribe al menos 2 opciones.";return}}
+    var id="q"+Date.now();$("qe").textContent="";
+    var q={texto:t,tipo:k,orden:Date.now()};if(k==="op")q.opciones=ops;
+    db.set(base+"/preguntas/"+id,q).then(function(){return db.set(base+"/activa",id)}).then(function(){
+      $("qt").value="";for(var i=0;i<4;i++)$("o"+i).value="";if(refreshNow)refreshNow()}).catch(function(){$("qe").textContent="No se pudo enviar la pregunta."});
+  };
+  $("preguntas").onclick=function(e){
+    var b=e.target.closest("button[data-a]");if(!b)return;
+    db.set(base+"/activa",b.dataset.a==="lanzar"?b.dataset.q:"").then(function(){if(refreshNow)refreshNow()}).catch(function(){$("net").hidden=false});
+  };
+  $("curso").onchange=function(){db.set(base+"/curso",$("curso").value).then(function(){if(refreshNow)refreshNow()})};
+  $("fin").onclick=function(){db.set(base+"/estado","terminada").then(function(){if(refreshNow)refreshNow()}).catch(function(){$("net").hidden=false})};
+  $("cerrar").onclick=function(){if(confirm("¿Cerrar y borrar la sala? Se perderán las respuestas.")){db.set(base,null).then(function(){localStorage.removeItem("tvprof");home()})}};
+  $("salir").onclick=home;
+  poll(function(){return db.get(base).then(function(r){
+    if(!r){$("finmsg").textContent="La sala ya no existe.";return}
+    var est=r.estudiantes||{},ids=Object.keys(est);
+    $("nEst").textContent=ids.length;
+    $("alumnos").innerHTML=ids.length?ids.map(function(i){return"<span>"+esc(est[i].nombre)+"</span>"}).join(""):'<span class="mut">Aún no entra nadie.</span>';
+    var ps=r.preguntas||{},resp=r.respuestas||{},qids=Object.keys(ps).sort(function(a,b){return ps[a].orden-ps[b].orden});
+    $("preguntas").innerHTML=qids.length?qids.map(function(id){
+      var q=ps[id],rs=resp[id]||{},rk=Object.keys(rs),act=r.activa===id,h='<div class="q"><b>'+esc(q.texto)+'</b>'+(act?'<span class="badge">Activa</span>':'')+'<div class="mut">'+rk.length+' de '+ids.length+' respondieron</div>';
+      if(q.tipo==="op"){var ops=q.opciones||{};Object.keys(ops).forEach(function(k){
+        var n=rk.filter(function(s){return rs[s]===k}).length,p=rk.length?Math.round(n/rk.length*100):0;
+        h+='<div class="res"><div class="t"><span>'+esc(ops[k])+'</span><span>'+n+'</span></div><div class="bar"><i style="width:'+p+'%"></i></div></div>'})}
+      else if(rk.length){h+='<ul>'+rk.map(function(s){return'<li><b>'+esc((est[s]||{}).nombre||"?")+':</b> '+esc(rs[s])+'</li>'}).join("")+'</ul>'}
+      h+='<div class="row">'+(act?'<button class="btn alt sm" data-a="cerrar">Cerrar pregunta</button>':'<button class="btn alt sm" data-a="lanzar" data-q="'+id+'">Lanzar de nuevo</button>')+'</div></div>';
+      return h}).join(""):'<p class="mut">Aún no hay preguntas.</p>';
+    if(document.activeElement!==$("curso"))$("curso").value=r.curso||"";
+    var term=r.estado==="terminada";
+    $("fin").disabled=!r.curso||term;
+    var nm="";COURSES.forEach(function(c){if(c[1]===r.curso)nm=c[0]});
+    $("finmsg").textContent=term?"Listo: tus estudiantes fueron enviados a "+(nm||"su curso")+".":"";
+  })});
+}
+
+/* ---------- Estudiante ---------- */
+function estUnir(){
+  stop();
+  show('<h1>Entrar a una sala</h1><div class="box"><label for="ec">Código de la sala</label><input type="text" id="ec" inputmode="numeric" maxlength="5" placeholder="Ej.: 49445" autocomplete="off">'
+   +'<label for="en">Tu nombre o apodo</label><input type="text" id="en" maxlength="20" autocomplete="off"><p class="mut" style="font-size:15px">Escribe solo tu nombre o un apodo. No escribas tu apellido ni otros datos personales.</p>'
+   +'<div class="row"><button class="btn" id="go">Entrar</button><button class="btn alt" id="bk">Volver</button></div><div class="err" id="e"></div></div>');
+  $("bk").onclick=home;
+  $("go").onclick=function(){
+    var code=$("ec").value.trim(),nombre=$("en").value.trim();
+    if(!/^\d{5}$/.test(code)){$("e").textContent="El código tiene 5 números.";return}
+    if(!nombre){$("e").textContent="Escribe tu nombre o apodo.";return}
+    var sid="s"+Math.random().toString(36).slice(2,10);
+    db.get("salas/"+code).then(function(r){
+      if(!r||r.estado==="terminada"||Date.now()-r.creada>864e5){$("e").textContent="No encontramos una sala abierta con ese código.";return}
+      return db.set("salas/"+code+"/estudiantes/"+sid,{nombre:nombre}).then(function(){
+        sessionStorage.setItem("tvest",JSON.stringify({code:code,sid:sid,nombre:nombre}));sala()});
+    }).catch(function(){$("e").textContent="No se pudo entrar. Revisa tu conexión."});
+  };
+}
+function sala(){
+  var S=null;try{S=JSON.parse(sessionStorage.getItem("tvest"))}catch(e){}
+  if(!S)return estUnir();
+  var base="salas/"+S.code,last="";
+  show('<div class="bar2"><div><span class="mut">Sala</span><div class="code" style="font-size:2.2rem">'+esc(S.code)+'</div></div><div class="mut" id="prof"></div></div><div id="est" class="box"><p class="mut">Conectando…</p></div><p><button class="btn alt sm" id="salir">Salir de la sala</button></p>');
+  $("salir").onclick=function(){sessionStorage.removeItem("tvest");home()};
+  poll(function(){return db.get(base).then(function(r){
+    var box=$("est");if(!box)return;
+    if(!r){stop();box.innerHTML='<h2>La sala se cerró</h2><p class="mut">Tu profesor cerró la sala. ¡Gracias por participar!</p>';return}
+    $("prof").textContent="Profesor: "+r.profesor+" · Tú: "+S.nombre;
+    var curso=null;COURSES.forEach(function(c){if(c[1]===r.curso)curso=c});
+    if(r.estado==="terminada"){
+      stop();
+      if(curso){box.innerHTML='<h2>¡Vamos al curso!</h2><p>Tu profesor te envía a <b>'+esc(curso[0])+'</b>.</p><p class="mut">Entrarás en unos segundos…</p><a class="btn" href="'+curso[1]+'">Ir ahora</a>';
+        setTimeout(function(){location.href=curso[1]},3000)}
+      else box.innerHTML='<h2>La clase terminó</h2><p class="mut">¡Gracias por participar!</p>';
+      return}
+    var q=r.activa&&r.preguntas?r.preguntas[r.activa]:null;
+    var ya=q&&r.respuestas&&r.respuestas[r.activa]&&r.respuestas[r.activa][S.sid]!==undefined;
+    var key=(q?r.activa:"")+"|"+(ya?1:0);if(key===last)return;last=key;
+    if(!q){box.innerHTML='<h2>Esperando la siguiente pregunta…</h2><p class="mut">Tu profesor la lanzará pronto.</p>';return}
+    if(ya){box.innerHTML='<h2>Respuesta enviada <span class="ok">✓</span></h2><p class="mut">Espera la siguiente pregunta o las indicaciones de tu profesor.</p>';return}
+    var h='<h2>'+esc(q.texto)+'</h2>';
+    if(q.tipo==="op"){var ops=q.opciones||{};Object.keys(ops).forEach(function(k){h+='<label class="opt"><input type="radio" name="r" value="'+esc(k)+'"> '+esc(ops[k])+'</label>'})}
+    else h+='<label for="ra" class="mut">Tu respuesta</label><textarea id="ra" maxlength="200"></textarea>';
+    h+='<div class="row"><button class="btn" id="env">Enviar respuesta</button></div><div class="err" id="re"></div>';
+    box.innerHTML=h;
+    $("env").onclick=function(){
+      var v;if(q.tipo==="op"){var s=document.querySelector('input[name="r"]:checked');v=s&&s.value}else v=$("ra").value.trim();
+      if(!v){$("re").textContent="Responde antes de enviar.";return}
+      $("env").disabled=true;
+      db.set(base+"/respuestas/"+r.activa+"/"+S.sid,v).then(function(){last="";}).catch(function(){$("env").disabled=false;$("re").textContent="No se pudo enviar. Inténtalo de nuevo."});
+    };
+  })});
+}
+home();
+})();
+</script>
+</body>
+</html>
