@@ -54,7 +54,8 @@ footer{max-width:900px;margin:auto;padding:0 20px 40px;color:var(--mut);font-siz
     </div>
 
     <div class="actions">
-      <a class="btn" href="/cursos/">Ver más cursos</a>
+      <a class="btn" id="irprueba" href="/prueba/canva-parte-2/" data-base="/prueba/canva-parte-2/">Ir a prueba</a>
+      <a class="btn alt" href="/cursos/">Ver más cursos</a>
       <button class="btn alt" id="snd" type="button">🔊 Escuchar de nuevo</button>
       <a class="btn alt" href="/cursodecanva/parte2/">Repasar el curso</a>
       <a class="btn alt" href="/cursodecanva/">Parte 1: diseños</a>
@@ -106,5 +107,14 @@ footer{max-width:900px;margin:auto;padding:0 20px 40px;color:var(--mut);font-siz
 })();
 </script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}</script>
+<script>
+(function(){
+  var a=document.getElementById("irprueba");if(!a)return;
+  var abc="abcdefghijklmnopqrstuvwxyz0123456789",b=new Uint8Array(8),id="";
+  try{crypto.getRandomValues(b)}catch(e){for(var i=0;i<8;i++)b[i]=Math.floor(Math.random()*256)}
+  for(var j=0;j<8;j++)id+=abc[b[j]%36];
+  a.href=a.getAttribute("data-base")+id;
+})();
+</script>
 </body>
 </html>
