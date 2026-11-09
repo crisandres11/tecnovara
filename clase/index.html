@@ -54,6 +54,10 @@ textarea{min-height:80px;resize:vertical}
 #net{color:var(--bad);font-size:14px}
 .ok{color:var(--ok);font-weight:600}
 .opts input{margin-bottom:8px}
+.aviso{background:var(--acc2);color:#14213d;border-radius:12px;padding:14px 18px;margin-bottom:16px;font-weight:600;overflow-wrap:anywhere}
+.aviso.nuevo{animation:pop .5s ease}
+@keyframes pop{0%{transform:scale(.96);opacity:.4}60%{transform:scale(1.02)}100%{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.aviso.nuevo{animation:none}}
 </style>
 </head>
 <body>
@@ -129,6 +133,7 @@ function panel(code,nombre){
   var cursoOpts='<option value="">Sin curso asignado</option>'+COURSES.map(function(c){return'<option value="'+c[1]+'">'+esc(c[0])+'</option>'}).join("");
   show('<div class="bar2"><div><span class="mut">Código de la sala</span><div class="code">'+esc(code)+'</div></div><div class="mut">Profesor: '+esc(nombre)+'<br>Comparte este código con tus estudiantes.</div></div>'
    +'<div class="box"><h2>Estudiantes (<span id="nEst">0</span>)</h2><div class="chips" id="alumnos"><span class="mut">Aún no entra nadie.</span></div></div>'
+   +'<div class="box"><h2>Mensaje para todos</h2><p class="mut">Los estudiantes lo verán en su pantalla.</p><label for="mt">Mensaje</label><textarea id="mt" maxlength="300" placeholder="Ej.: Abran la pestaña de Gmail y esperen mi indicación"></textarea><div class="row"><button class="btn" id="menv">Enviar mensaje</button><button class="btn alt" id="mdel">Quitar mensaje</button></div><div class="err" id="me"></div><p id="mest" class="mut"></p></div>'
    +'<div class="box"><h2>Nueva pregunta</h2><label for="qt">Pregunta</label><textarea id="qt" maxlength="200"></textarea>'
    +'<label for="qk">Tipo de respuesta</label><select id="qk"><option value="op">Opción múltiple</option><option value="ab">Respuesta abierta</option></select>'
    +'<div id="ops" class="opts"><label>Opciones (mínimo 2)</label><input type="text" id="o0" maxlength="60" placeholder="Opción 1"><input type="text" id="o1" maxlength="60" placeholder="Opción 2"><input type="text" id="o2" maxlength="60" placeholder="Opción 3 (opcional)"><input type="text" id="o3" maxlength="60" placeholder="Opción 4 (opcional)"></div>'
@@ -138,6 +143,12 @@ function panel(code,nombre){
    +'<div class="row"><button class="btn big" id="fin" disabled>Terminado, ir a curso asignado</button></div><p id="finmsg" class="ok"></p></div>'
    +'<p><button class="btn alt sm" id="cerrar">Cerrar y borrar sala</button> <button class="btn alt sm" id="salir">Salir (dejar la sala abierta)</button></p>');
   var base="salas/"+code;
+  $("menv").onclick=function(){
+    var t=$("mt").value.trim();if(!t){$("me").textContent="Escribe un mensaje.";return}
+    $("me").textContent="";
+    db.set(base+"/mensaje",{texto:t.slice(0,300),ts:Date.now()}).then(function(){$("mt").value="";if(refreshNow)refreshNow()}).catch(function(){$("me").textContent="No se pudo enviar el mensaje."});
+  };
+  $("mdel").onclick=function(){db.set(base+"/mensaje",null).then(function(){if(refreshNow)refreshNow()}).catch(function(){$("me").textContent="No se pudo quitar el mensaje."})};
   $("qk").onchange=function(){$("ops").hidden=$("qk").value!=="op"};
   $("lanzar").onclick=function(){
     var t=$("qt").value.trim(),k=$("qk").value,ops={};
@@ -159,6 +170,7 @@ function panel(code,nombre){
   $("salir").onclick=home;
   poll(function(){return db.get(base).then(function(r){
     if(!r){$("finmsg").textContent="La sala ya no existe.";return}
+    $("mest").textContent=(r.mensaje&&r.mensaje.texto)?"Mensaje visible para los estudiantes: «"+r.mensaje.texto+"»":"No hay ningún mensaje visible.";
     var est=r.estudiantes||{},ids=Object.keys(est);
     $("nEst").textContent=ids.length;
     $("alumnos").innerHTML=ids.length?ids.map(function(i){return"<span>"+esc(est[i].nombre)+"</span>"}).join(""):'<span class="mut">Aún no entra nadie.</span>';
@@ -202,12 +214,15 @@ function sala(){
   var S=null;try{S=JSON.parse(sessionStorage.getItem("tvest"))}catch(e){}
   if(!S)return estUnir();
   var base="salas/"+S.code,last="";
-  show('<div class="bar2"><div><span class="mut">Sala</span><div class="code" style="font-size:2.2rem">'+esc(S.code)+'</div></div><div class="mut" id="prof"></div></div><div id="est" class="box"><p class="mut">Conectando…</p></div><p><button class="btn alt sm" id="salir">Salir de la sala</button></p>');
+  show('<div class="bar2"><div><span class="mut">Sala</span><div class="code" style="font-size:2.2rem">'+esc(S.code)+'</div></div><div class="mut" id="prof"></div></div><div id="msg" class="aviso" role="status" aria-live="polite" hidden></div><div id="est" class="box"><p class="mut">Conectando…</p></div><p><button class="btn alt sm" id="salir">Salir de la sala</button></p>');
   $("salir").onclick=function(){sessionStorage.removeItem("tvest");home()};
   poll(function(){return db.get(base).then(function(r){
     var box=$("est");if(!box)return;
     if(!r){stop();box.innerHTML='<h2>La sala se cerró</h2><p class="mut">Tu profesor cerró la sala. ¡Gracias por participar!</p>';return}
     $("prof").textContent="Profesor: "+r.profesor+" · Tú: "+S.nombre;
+    var mb=$("msg"),m=(r.mensaje&&r.mensaje.texto)?r.mensaje:null;
+    if(m){if(mb.dataset.ts!==String(m.ts)){mb.textContent="";var tt=document.createElement("small");tt.textContent="Mensaje de tu profesor";var br=document.createElement("div");br.textContent=String(m.texto).slice(0,300);mb.appendChild(tt);mb.appendChild(br);mb.dataset.ts=String(m.ts);mb.classList.remove("nuevo");void mb.offsetWidth;mb.classList.add("nuevo")}mb.hidden=false}
+    else{mb.hidden=true;mb.dataset.ts=""}
     var curso=null;COURSES.forEach(function(c){if(c[1]===r.curso)curso=c});
     if(r.estado==="terminada"){
       stop();
