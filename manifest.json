@@ -1,0 +1,17 @@
+{
+  "id": "/",
+  "name": "TECNOVARA",
+  "short_name": "TECNOVARA",
+  "description": "Educación gratuita creada por un estudiante: cursos y salón de clases.",
+  "lang": "es",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f6fb",
+  "theme_color": "#2f5bff",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
