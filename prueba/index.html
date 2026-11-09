@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prueba · TECNOVARA</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2f5bff">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#f4f6fb;--surf:#fff;--ink:#14213d;--mut:#4d5a78;--line:#d9dfec;--acc:#2f5bff;--acc2:#ffc93c;--onacc:#fff;--ok:#0f8a5f;--bad:#c0392b;--okbg:#e3f6ee;--badbg:#fdeae7}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1730;--surf:#18223f;--ink:#eef1fa;--mut:#a9b4d0;--line:#2c3860;--acc:#7b97ff;--onacc:#0f1730;--ok:#4cd1a0;--bad:#ff8a7a;--okbg:#12362d;--badbg:#401f1d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 "Source Sans 3",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.15;margin:0}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+.top{border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.in{max-width:820px;margin:auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:inline-flex;align-items:center;gap:10px;font:700 21px "Bricolage Grotesque",sans-serif;color:var(--ink);text-decoration:none}
+.logo img{width:28px;height:28px;border-radius:6px}.logo b{color:var(--acc)}
+.in a.b{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+main{max-width:820px;margin:auto;padding:34px 20px 60px}
+h1{font-size:clamp(2rem,6vw,3.2rem);letter-spacing:-.02em;margin-bottom:8px}
+h2{font-size:1.5rem;margin-bottom:10px}
+.mut{color:var(--mut)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:26px 0}
+.card{text-align:left;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:24px;color:var(--ink);font:inherit;cursor:pointer;display:block;width:100%;text-decoration:none}
+.card:hover{border-color:var(--acc)}
+.card h2{margin-bottom:6px}
+.card p{margin:0;color:var(--mut)}
+.card .st{display:block;margin-top:10px;font-weight:600;color:var(--ok);font-size:15px}
+.box{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:20px}
+.btn{display:inline-block;background:var(--acc);color:var(--onacc);font:600 17px "Source Sans 3",sans-serif;border:0;border-radius:10px;padding:12px 22px;cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.prog{display:flex;justify-content:space-between;font-size:15px;color:var(--mut);margin-bottom:6px}
+.bar{height:10px;background:var(--line);border-radius:8px;overflow:hidden;margin-bottom:20px}
+.bar i{display:block;height:100%;background:var(--ok);transition:width .3s}
+.q{font-size:1.35rem;font-weight:600;margin:0 0 14px}
+.opt{display:block;width:100%;text-align:left;background:var(--bg);color:var(--ink);border:2px solid var(--line);border-radius:10px;padding:12px 16px;margin:8px 0;font:inherit;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--acc)}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt:disabled{cursor:default}
+.fb{border-radius:10px;padding:12px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg)}.fb.bad{background:var(--badbg)}
+.fb b{display:block}
+.big{font:700 clamp(2.4rem,8vw,4rem) "Bricolage Grotesque",sans-serif;line-height:1}
+.rev{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
+.rev p{margin:2px 0}
+.tag{display:inline-block;background:var(--acc2);color:#14213d;font-weight:600;border-radius:6px;padding:0 8px;font-size:14px}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="logo" href="/"><img src="/favicon.ico" alt=""><span>TECNO<b>VARA</b></span></a>
+  <a class="b" href="/cursos/">Todos los cursos</a>
+</div></header>
+<main id="app" tabindex="-1"></main>
+<noscript><p style="padding:20px">Necesitas activar JavaScript para hacer la prueba.</p></noscript>
+<script>
+(function(){
+"use strict";
+/* Cada pregunta: [pregunta, respuesta correcta, incorrecta 1, incorrecta 2, explicación] */
+var CUR={
+canva:{s:"canva",n:"Curso de Canva (Parte 1)",u:"/cursodecanva/",l:"/cursodecanva/logrado/",q:[
+["¿Qué es Canva?","Una plataforma de diseño en línea para crear presentaciones, publicaciones y más","Un programa solo para editar videos","Una red social","Canva sirve para crear diseños sin ser diseñador, desde el navegador o la app."],
+["¿Dónde cargas tus propias imágenes?","En la pestaña Subidos","En Deshacer","En Descargar","En Subidos cargas tus archivos para usarlos en el diseño."],
+["¿Para qué sirve la barra de opciones?","Para ajustar lo que seleccionaste, como color o tamaño","Para elegir plantillas","Para cerrar sesión","Aparece al seleccionar algo y muestra sus ajustes."],
+["¿Cuántas tipografías se recomienda usar como máximo?","Dos","Seis","Diez","Usar pocas tipografías hace que el diseño se vea ordenado."],
+["Para que un texto se lea bien necesitas…","Buen contraste con el fondo","Letra muy pequeña","Muchos colores","El contraste entre la letra y el fondo ayuda a leer mejor."],
+["¿Qué haces con una plantilla?","Reemplazar textos, imágenes y colores por los tuyos","Imprimirla sin cambiar nada","Nada, no se puede editar","Una plantilla es un punto de partida que puedes modificar."],
+["En una diapositiva conviene…","Una idea con pocas palabras","Párrafos muy largos","Todo el texto del trabajo","Una idea por diapositiva, con frases cortas, se entiende mejor."],
+["¿Qué formato es mejor para publicar una imagen nítida en redes?","PNG","TXT","ZIP","PNG sirve para imágenes nítidas en redes y pantallas."]
+]},
+canva2:{s:"canva-parte-2",n:"Curso de Canva (Parte 2)",u:"/cursodecanva/parte2/",l:"/cursodecanva/parte2/logrado/",q:[
+["¿Qué significa invitar a alguien a tu proyecto?","Darle acceso para que vea o trabaje en el mismo diseño","Regalarle tu contraseña","Borrar tu proyecto","Invitar es compartir el diseño para colaborar."],
+["¿Qué botón presionas en el menú de arriba para invitar a alguien?","Compartir","Descargar","Deshacer","Con tu proyecto abierto, usas el botón Compartir."],
+["¿Qué escribes para agregar a una persona?","Su correo electrónico","Tu contraseña","Su dirección de casa","Se invita con el correo electrónico de la persona."],
+["¿Qué haces antes de presionar Compartir?","Abrir tu proyecto","Cerrar sesión","Borrar el diseño","Primero debes abrir el proyecto que quieres compartir."],
+["¿Qué presionas para añadir a alguien?","Agregar personas","Imprimir","Salir","En la ventana de compartir está la opción Agregar personas."],
+["¿A quiénes debes invitar?","A personas de confianza que conoces","A cualquier desconocido","A nadie","Invita solo a personas que conoces."],
+["¿Por qué debes revisar bien cada correo?","Una letra equivocada y la invitación llega a otra persona","Para que se vea más bonito","No hace falta revisarlo","Un correo mal escrito puede enviar la invitación a quien no corresponde."],
+["¿Puedes compartir tu contraseña con la persona invitada?","No, nunca la compartas","Sí, para que pueda editar","Solo si es tu amigo","La contraseña es privada. La invitación se hace con el correo, no con la contraseña."]
+]},
+gmail:{s:"gmail",n:"Curso de Gmail (Parte 1)",u:"/cursodegmail/",l:"/cursodegmail/logrado/",q:[
+["¿Cuál es el primer paso para enviar un correo?","Buscar Gmail en tu navegador","Presionar Enviar","Escribir el asunto","Primero abres Gmail desde tu navegador."],
+["¿Qué botón usas para crear un mensaje nuevo?","Redactar","Enviar","Ayuda","Redactar abre la ventana para escribir un mensaje nuevo."],
+["¿Qué va en el asunto de un correo?","El título corto de lo que trata","Tu contraseña","Nada, siempre va vacío","El asunto dice de qué trata el correo antes de abrirlo."],
+["¿Por qué debes revisar el correo del destinatario?","Para que llegue a la persona correcta","Para cambiar el color","No hace falta revisarlo","Una letra equivocada y el mensaje no llega a la persona correcta."],
+["¿Cuál es un buen asunto?","Fotos de fiesta 2026","Hola","Sin asunto","Un asunto claro y corto ayuda a entender de qué trata."],
+["¿Qué incluye una estructura simple de mensaje?","Saludo, mensaje, despedida y tu nombre","Solo el asunto","Solo una foto","Saludo, mensaje claro, despedida y tu nombre."],
+["¿Qué botón presionas para mandar el mensaje?","Enviar","Redactar","Cerrar sesión","Cuando todo está bien, presionas Enviar."],
+["¿Dónde ves los correos que ya mandaste?","En la carpeta Enviados","En el teclado","En la barra del navegador","Los mensajes que mandas quedan en la carpeta Enviados."]
+]},
+gmail2:{s:"gmail-parte-2",n:"Curso de Gmail (Parte 2)",u:"/cursodegmail/parte2/",l:"/cursodegmail/parte2/logrado/",q:[
+["¿Qué botón presionas para entrar a tu cuenta?","Acceder","Enviar","Redactar","Acceder te lleva a ingresar tu correo."],
+["¿Qué escribes primero para ingresar?","Tu correo electrónico","La contraseña de otra persona","Nada","Primero ingresas tu correo y después tu contraseña."],
+["¿Quién puede saber tu contraseña?","Solo tú","Tus amigos","Cualquier persona","La contraseña es privada: nadie más debe conocerla."],
+["Si eres de una escuela y no sabes tu contraseña, debes…","Contactar a la administración de tu escuela","Pedírsela a un desconocido","Inventar una al azar","La administración de tu escuela puede ayudarte con tu cuenta."],
+["¿Cómo sabes que lograste entrar?","Aparece la ventana de Gmail con tu bandeja de entrada","La pantalla se apaga","No se puede saber","Si ves tu bandeja de entrada, ya ingresaste."],
+["Si usas un computador que no es tuyo, al terminar…","Cierras tu sesión","Dejas la cuenta abierta","Compartes tu contraseña","Cerrar la sesión evita que otras personas entren a tu cuenta."],
+["¿Cómo reconoces el sitio oficial de Gmail?","Su dirección pertenece a google.com","Tiene muchos anuncios","Te pide la contraseña por mensaje","Las páginas falsas intentan parecerse; revisa la dirección."],
+["Tu correo es como la dirección de tu casa, ¿y tu contraseña?","Es la llave, y es privada","Es un adorno","Se comparte con todos","El correo se puede compartir; la contraseña no."]
+]},
+forms:{s:"google-forms",n:"Curso de Google Forms",u:"/cursodegoogleforms/",l:"/cursodegoogleforms/logrado/",q:[
+["¿Qué es Google Forms?","Una herramienta gratuita de Google para crear formularios en línea","Un editor de videos","Una red social","Sirve para crear formularios que otras personas responden en línea."],
+["¿Qué tipo de formulario eliges para empezar de cero?","En blanco","Uno ajeno","Ninguno","Un formulario en blanco está vacío y lo llenas con tus preguntas."],
+["¿Qué haces en el paso de título y descripción?","Escribes el nombre del formulario, una frase que explique para qué es y tus preguntas","Borras el formulario","Lo imprimes","Ahí completas el título, la descripción y la pregunta con sus respuestas."],
+["¿Qué hace una pregunta obligatoria?","Impide enviar el formulario sin responderla","Borra la pregunta","Cambia el título","Si es obligatoria, hay que responderla para poder enviar."],
+["¿Dónde se activa una pregunta obligatoria?","En el interruptor de abajo de la pregunta","En el navegador","En la barra de búsqueda","El interruptor aparece en la parte de abajo de la pregunta."],
+["¿Qué botón presionas para dejar listo tu formulario para compartir?","Publicar","Cerrar","Imprimir","Con Publicar dejas el formulario disponible."],
+["¿Qué entregas a las personas que deben responder?","El enlace del formulario","Tu contraseña","Una foto","Compartes el enlace para que puedan abrir y responder."],
+["Si el formulario es público, en el paso de Administrar…","No haces clic y presionas Publicar","Compartes tu contraseña","Borras el formulario","Administrar es para ver qué correos pueden acceder; si es público, sigues con Publicar."]
+]}
+};
+
+var $=function(id){return document.getElementById(id)};
+var esc=function(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function prep(it){return{q:it[0],c:it[1],e:it[4],o:shuffle([it[1],it[2],it[3]])}}
+function load(){try{return JSON.parse(localStorage.getItem("tecnovara-prueba")||"{}")||{}}catch(e){return{}}}
+function save(k,patch){try{var d=load();d[k]=Object.assign(d[k]||{},patch);localStorage.setItem("tecnovara-prueba",JSON.stringify(d))}catch(e){}}
+function put(h){$("app").innerHTML=h;$("app").focus({preventScroll:true});window.scrollTo(0,0)}
+
+function genId(){var a="abcdefghijklmnopqrstuvwxyz0123456789",b=new Uint8Array(8),o="";
+  try{crypto.getRandomValues(b)}catch(e){for(var i=0;i<8;i++)b[i]=Math.floor(Math.random()*256)}
+  for(var j=0;j<8;j++)o+=a[b[j]%36];return o}
+function keyDeSlug(sl){var r=null;Object.keys(CUR).forEach(function(k){if(CUR[k].s===sl)r=k});return r}
+var key=null,id=null,RUTA=/^\/prueba\/([a-z0-9-]+)(?:\/([a-z0-9]{4,20}))?\/?$/i;
+(function(){
+  var q=new URLSearchParams(location.search),m=RUTA.exec(location.pathname);
+  if(!m&&q.get("p"))m=RUTA.exec(q.get("p"));             /* llegada desde 404.html */
+  if(m){key=keyDeSlug(m[1].toLowerCase());id=m[2]||null}
+  else if(q.get("curso")&&CUR[q.get("curso")])key=q.get("curso"); /* enlaces antiguos */
+  if(key){if(!id)id=genId();try{history.replaceState(null,"","/prueba/"+CUR[key].s+"/"+id)}catch(e){}}
+})();
+function nuevoId(){id=genId();try{history.replaceState(null,"","/prueba/"+CUR[key].s+"/"+id)}catch(e){}}
+var C=key?CUR[key]:null;
+
+/* ---------- Elegir curso (si no viene en la dirección) ---------- */
+function elegir(){
+  put('<h1>Prueba</h1><p class="mut">¿De qué curso quieres hacer la prueba?</p><div class="cards">'+Object.keys(CUR).map(function(k){return'<a class="card" href="/prueba/'+CUR[k].s+'/'+genId()+'"><h2>'+esc(CUR[k].n)+'</h2></a>'}).join("")+'</div>');
+}
+
+/* ---------- Elegir modo ---------- */
+function modos(){
+  var d=load()[key]||{};
+  put('<h1>¿Cómo quieres hacer la prueba?</h1><p class="mut">'+esc(C.n)+'</p>'
+   +'<div class="cards">'
+   +'<button class="card" id="mE"><h2>Modo Estudioso</h2><p>Una manera tranquila, vamos de a poco hasta que lo sepas.</p>'+(d.estudioso?'<span class="st">✓ Completado</span>':'')+'</button>'
+   +'<button class="card" id="mA"><h2>Modo Astuto</h2><p>Te haremos la prueba de manera rápida, notando que dominas el contenido, recuerda que puedes volver a hacer la prueba.</p>'+(d.astuto!=null?'<span class="st">Mejor resultado: '+d.astuto+' de 5</span>':'')+'</button>'
+   +'</div><p><a href="'+C.l+'">← Volver</a></p>');
+  $("mE").onclick=estudioso;$("mA").onclick=astuto;
+}
+
+/* ---------- Modo Estudioso: una pregunta a la vez; las falladas vuelven ---------- */
+function estudioso(){
+  var cola=shuffle(C.q).map(prep),total=cola.length,dom=0,intentos=0,fallos=0;
+  function paso(){
+    if(!cola.length){
+      save(key,{estudioso:true});
+      put('<div class="box"><h2>¡Lo sabes! <span class="tag">Modo Estudioso</span></h2><p>Dominaste las '+total+' preguntas del '+esc(C.n)+'.</p><p class="mut">Intentos: '+intentos+' · Veces que te equivocaste: '+fallos+'</p><div class="row"><button class="btn" id="a1">Probar Modo Astuto</button><a class="btn alt" href="'+C.l+'">Volver</a><button class="btn alt" id="a2">Cambiar de modo</button></div></div>');
+      $("a1").onclick=astuto;$("a2").onclick=modos;return}
+    var p=cola[0];
+    put('<div class="box"><div class="prog"><span>Modo Estudioso</span><span>Dominadas: '+dom+' de '+total+'</span></div><div class="bar"><i style="width:'+Math.round(dom/total*100)+'%"></i></div>'
+     +'<p class="q">'+esc(p.q)+'</p><div id="ops">'+p.o.map(function(t,i){return'<button class="opt" data-i="'+i+'">'+esc(t)+'</button>'}).join("")+'</div><div id="fb"></div></div>');
+    $("ops").onclick=function(e){
+      var b=e.target.closest(".opt");if(!b)return;
+      var ok=p.o[+b.dataset.i]===p.c;intentos++;
+      Array.prototype.forEach.call($("ops").children,function(x){x.disabled=true;if(p.o[+x.dataset.i]===p.c)x.classList.add("ok")});
+      if(!ok)b.classList.add("bad");
+      $("fb").innerHTML='<div class="fb '+(ok?'ok':'bad')+'" role="status"><b>'+(ok?'¡Correcto!':'Casi. La respuesta correcta está marcada en verde.')+'</b>'+esc(p.e)+(ok?'':' Esta pregunta volverá más adelante.')+'</div><div class="row"><button class="btn" id="sig">'+(cola.length===1&&ok?'Terminar':'Siguiente')+'</button></div>';
+      $("sig").focus();
+      $("sig").onclick=function(){
+        if(ok){dom++;cola.shift()}else{fallos++;var f=cola.shift();cola.push(prep(C.q.filter(function(it){return it[0]===f.q})[0]))}
+        paso();
+      };
+    };
+  }
+  paso();
+}
+
+/* ---------- Modo Astuto: 5 preguntas seguidas y resultado al final ---------- */
+function astuto(){
+  var N=5,lista=shuffle(C.q).slice(0,N).map(prep),i=0,fallas=[];
+  function paso(){
+    if(i>=lista.length){
+      var buenas=lista.length-fallas.length,domina=buenas>=4;
+      var d=load()[key]||{};if(d.astuto==null||buenas>d.astuto)save(key,{astuto:buenas});
+      put('<div class="box"><span class="tag">Modo Astuto</span><div class="big" style="margin:10px 0">'+buenas+' de '+lista.length+'</div>'
+       +'<h2>'+(domina?'¡Dominas el contenido!':'Estás cerca, repasemos un poco')+'</h2>'
+       +'<p class="mut">'+(domina?'Muy buen trabajo. Puedes volver a hacer la prueba cuando quieras.':'Puedes volver a intentarlo, o probar el Modo Estudioso para ir de a poco hasta que lo sepas.')+'</p>'
+       +(fallas.length?'<h3 style="margin-top:18px">Para repasar</h3>'+fallas.map(function(f){return'<div class="rev"><p><b>'+esc(f.q)+'</b></p><p>Tu respuesta: '+esc(f.t)+'</p><p>Correcta: <b>'+esc(f.c)+'</b></p><p class="mut">'+esc(f.e)+'</p></div>'}).join(""):'')
+       +'<div class="row"><button class="btn" id="r1">Repetir Modo Astuto</button><button class="btn alt" id="r2">Probar Modo Estudioso</button><a class="btn alt" href="'+C.u+'">Repasar el curso</a><a class="btn alt" href="'+C.l+'">Volver</a></div></div>');
+      $("r1").onclick=function(){nuevoId();astuto()};$("r2").onclick=estudioso;return}
+    var p=lista[i];
+    put('<div class="box"><div class="prog"><span>Modo Astuto</span><span>Pregunta '+(i+1)+' de '+lista.length+'</span></div><div class="bar"><i style="width:'+Math.round(i/lista.length*100)+'%"></i></div>'
+     +'<p class="q">'+esc(p.q)+'</p><div id="ops">'+p.o.map(function(t,k){return'<button class="opt" data-i="'+k+'">'+esc(t)+'</button>'}).join("")+'</div></div>');
+    $("ops").onclick=function(e){
+      var b=e.target.closest(".opt");if(!b)return;
+      var t=p.o[+b.dataset.i];if(t!==p.c)fallas.push({q:p.q,t:t,c:p.c,e:p.e});
+      i++;paso();
+    };
+  }
+  paso();
+}
+
+if(!C)elegir();else modos();
+})();
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}</script>
+</body>
+</html>
