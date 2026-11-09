@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>¡Curso completado! · TECNOVARA</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2f5bff">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
 :root{--bg:#f4f6fb;--surf:#fff;--ink:#14213d;--mut:#4d5a78;--line:#d9dfec;--acc:#2f5bff;--acc2:#ffc93c;--onacc:#fff}
@@ -52,7 +54,9 @@ footer{max-width:900px;margin:auto;padding:0 20px 40px;color:var(--mut);font-siz
     </div>
 
     <div class="actions">
-      <a class="btn" href="/cursos/">Ver más cursos</a>
+      <a class="btn" id="irprueba" href="/prueba/gmail/" data-base="/prueba/gmail/">Ir a prueba</a>
+      <a class="btn alt" href="/cursos/">Ver más cursos</a>
+      <button class="btn alt" id="snd" type="button">🔊 Escuchar de nuevo</button>
       <a class="btn alt" href="/cursodegmail/">Repasar el curso</a>
     </div>
   </section>
@@ -74,9 +78,24 @@ footer{max-width:900px;margin:auto;padding:0 20px 40px;color:var(--mut);font-siz
     done=!!(st&&st.done&&st.quiz&&st.quiz.fin&&st.quiz.fin.pass&&[0,1,2,3,4,5].every(function(i){return st.done.indexOf(i)>-1}));
   }catch(e){}
   document.getElementById(done?"ok":"no").classList.remove("hide");
+  if(done){
+    var au=null;
+    try{au=new Audio("/assets/Correct.mp3")}catch(e){}
+    var play=function(){try{var p=au&&au.play();if(p&&p.catch)p.catch(function(){})}catch(e){}};
+    try{
+      var first=au&&au.play();
+      if(first&&first.catch)first.catch(function(){
+        ["click","keydown","touchstart"].forEach(function(ev){document.addEventListener(ev,function h(){document.removeEventListener(ev,h);play()},{once:true})});
+      });
+    }catch(e){}
+    var snd=document.getElementById("snd");
+    if(snd)snd.addEventListener("click",function(){if(au){au.currentTime=0;play()}});
+  }
+  try{var sv=localStorage.getItem("tecnovara-nombre");if(sv)document.getElementById("nm").value=sv}catch(e){}
   document.getElementById("mk").addEventListener("click",function(){
     var n=document.getElementById("nm").value.trim();
     if(!n){document.getElementById("nm").focus();return}
+    try{localStorage.setItem("tecnovara-nombre",n)}catch(e){}
     var d=new Date().toLocaleDateString("es-CL",{day:"numeric",month:"long",year:"numeric"});
     var out=document.getElementById("out");
     out.innerHTML='<div class="cert"><div class="brand">TECNO<b>VARA</b></div><h3>Certificado de finalización</h3><p>Se certifica que</p><div class="nm"></div><p>completó el Curso de Gmail</p><p>Herramientas digitales · Nivel principiante</p><p></p></div><div class="actions" style="margin-top:14px"><button class="btn alt" id="pr">Imprimir o guardar en PDF</button></div>';
@@ -84,6 +103,16 @@ footer{max-width:900px;margin:auto;padding:0 20px 40px;color:var(--mut);font-siz
     out.querySelector(".cert p:last-child").textContent=d;
     document.getElementById("pr").addEventListener("click",function(){window.print()});
   });
+})();
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}</script>
+<script>
+(function(){
+  var a=document.getElementById("irprueba");if(!a)return;
+  var abc="abcdefghijklmnopqrstuvwxyz0123456789",b=new Uint8Array(8),id="";
+  try{crypto.getRandomValues(b)}catch(e){for(var i=0;i<8;i++)b[i]=Math.floor(Math.random()*256)}
+  for(var j=0;j<8;j++)id+=abc[b[j]%36];
+  a.href=a.getAttribute("data-base")+id;
 })();
 </script>
 </body>
