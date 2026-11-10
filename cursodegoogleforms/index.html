@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Curso de Google Forms · TECNOVARA</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2f5bff">
 <meta name="description" content="Curso gratuito de Google Forms: aprende a crear y compartir un formulario paso a paso. Con certificado gratis de TECNOVARA.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
@@ -154,6 +156,7 @@ footer{max-width:1100px;margin:auto;padding:0 20px 40px;color:var(--mut);font-si
     <h2>Programa</h2>
     <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="pbar"><i></i></div>
     <div id="ptxt" style="font-size:14px;color:var(--mut)"></div>
+    <button class="btn alt" id="reset" style="margin:10px 0;padding:6px 12px;font-size:14px">Reiniciar progreso</button>
     <ol id="menu"></ol>
   </nav>
   <main class="lesson" id="lesson" tabindex="-1"></main>
@@ -215,6 +218,7 @@ fin:[["¿Qué tipo de formulario eliges para empezar de cero?",["En blanco","Nin
 /* ---------- Estado (almacenamiento opcional, con protección) ---------- */
 let st={cur:0,done:[],quiz:{}};
 try{const s=localStorage.getItem("tecnovara-forms");if(s)st=JSON.parse(s)}catch(e){}
+if(!st||typeof st!=="object")st={cur:0,done:[],quiz:{}};if(!Array.isArray(st.done))st.done=[];if(!st.quiz||typeof st.quiz!=="object")st.quiz={};if(!(st.cur>=0&&st.cur<L.length))st.cur=0;
 const save=()=>{try{localStorage.setItem("tecnovara-forms",JSON.stringify(st))}catch(e){}};
 const $=id=>document.getElementById(id);
 
@@ -229,7 +233,7 @@ function render(){
   if(l.f&&!l.h.includes("FIGURE"))body+=FIG[l.f];
   let q="";
   if(l.q){const qs=Q[l.q],r=st.quiz[l.q];
-    q=`<div class="quiz"><h3>${l.final?"Evaluación final":"Cuestionario del módulo"}</h3>`+qs.map((x,i)=>`<div class="q"><p>${i+1}. ${x[0]}</p>${x[1].map((o,j)=>`<label><input type="radio" name="${l.q}${i}" value="${j}"> ${o}</label>`).join("")}</div>`).join("")+`<button class="btn" id="chk">Comprobar respuestas</button><div class="fb" id="fb" aria-live="polite">${r?r.msg:""}</div></div>`}
+    q=`<div class="quiz"><h3>${l.final?"Evaluación final":"Cuestionario del módulo"}</h3>`+qs.map((x,i)=>`<div class="q"><p>${i+1}. ${x[0]}</p>${x[1].map((o,j)=>[o,j]).sort(()=>Math.random()-.5).map(([o,j])=>`<label><input type="radio" name="${l.q}${i}" value="${j}"> ${o}</label>`).join("")}</div>`).join("")+`<button class="btn" id="chk">Comprobar respuestas</button><div class="fb" id="fb" aria-live="polite">${r?r.msg:""}</div></div>`}
   const cert=l.final?`<div id="certbox"></div>`:"";
   $("lesson").innerHTML=`<h2>${st.cur+1}. ${l.t}</h2>${body}${q}${cert}<div class="nav2"><button class="btn alt" id="prev" ${st.cur?"":"disabled"}>Anterior</button><button class="btn" id="next">${st.cur<L.length-1?"Completar y seguir":"Completar lección"}</button></div>`;
   if(l.final)certUI();
@@ -241,6 +245,7 @@ function certUI(){
 }
 document.addEventListener("click",e=>{
   const b=e.target.closest("button");if(!b)return;
+  if(b.id==="reset"){if(confirm("¿Borrar tu progreso de este curso? Esta acción no se puede deshacer.")){try{localStorage.removeItem("tecnovara-forms")}catch(err){}st={cur:0,done:[],quiz:{}};render();$("lesson").focus()}return}
   if(b.dataset.i){st.cur=+b.dataset.i;render();$("lesson").focus();return}
   if(b.id==="start"){$("course").scrollIntoView();return}
   if(b.id==="prev"){st.cur--;render();$("lesson").focus()}
@@ -250,9 +255,11 @@ document.addEventListener("click",e=>{
     if(miss){$("fb").innerHTML='<span class="bad">Responde todas las preguntas.</span>';return}
     const need=k==="fin"?3:qs.length-(qs.length>2?1:0),pass=n>=need;
     const msg=`<span class="${pass?"ok":"bad"}">Acertaste ${n} de ${qs.length}. ${pass?"¡Aprobado!":"Repasa la lección e inténtalo de nuevo."}</span>`;
-    st.quiz[k]={pass,msg};$("fb").innerHTML=msg;save();if(L[st.cur].final)certUI()}
+    st.quiz[k]={pass,msg,n,total:qs.length};try{var ac=JSON.parse(localStorage.getItem("tecnovara-aciertos")||"{}");ac["tecnovara-forms"]=ac["tecnovara-forms"]||{};ac["tecnovara-forms"][k]={n:n,t:qs.length};localStorage.setItem("tecnovara-aciertos",JSON.stringify(ac))}catch(err){}$("fb").innerHTML=msg;save();if(L[st.cur].final)certUI()}
 });
 render();
+if(st.done.length&&$("start"))$("start").textContent="Continuar el curso";
 </script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}</script>
 </body>
 </html>
