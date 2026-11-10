@@ -1,17 +1,19 @@
 /* Service worker de TECNOVARA. Si cambias archivos importantes, sube el número de versión. */
-const V = "tecnovara-v4";
+const V = "tecnovara-v5";
 const PRE = [
   "/", "/cursos/", "/clase/", "/prueba/",
   "/cursodecanva/", "/cursodecanva/logrado/",
   "/cursodecanva/parte2/", "/cursodecanva/parte2/logrado/",
   "/cursodegmail/", "/cursodegmail/logrado/",
   "/cursodegmail/parte2/", "/cursodegmail/parte2/logrado/",
+  "/cursodegmail/parte3/", "/cursodegmail/parte3/logrado/",
   "/cursodegoogleforms/", "/cursodegoogleforms/logrado/",
   "/favicon.ico", "/assets/icon-192.png", "/assets/icon-512.png",
   "/assets/Canva.png", "/assets/Canva1.png", "/assets/Canva2.png",
   "/assets/CanvaPanel.png", "/assets/CanvaTama%C3%B1o.png", "/assets/CanvaColor.png", "/assets/CanvaCreado.png",
   "/assets/Gmail1.png", "/assets/Gmail2.png", "/assets/Gmail3.png", "/assets/Gmail4.png",
   "/assets/Canva_2_1.png", "/assets/Canva_2_2.png", "/assets/Canva_2_3.png",
+  "/assets/Gmail_3_1.png", "/assets/Gmail_3_2.png", "/assets/Gmail_3_3.png", "/assets/Gmail_3_4.png", "/assets/Gmail_3_5.png",
   "/assets/GmailP2.png", "/assets/GmailP3.png",
   "/assets/GoogleForms.png", "/assets/GoogleForms1.png", "/assets/GoogleForms2.png",
   "/assets/GoogleForms3.png", "/assets/GoogleForms4.png", "/assets/GoogleForms5.png",
