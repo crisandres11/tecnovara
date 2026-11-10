@@ -2,14 +2,19 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<script>try{var t=localStorage.getItem("tecnovara-tema");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TECNOVARA · Educación gratuita creada por un estudiante</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2f5bff">
 <meta name="description" content="TECNOVARA es un proyecto de educación gratuita creado por Cristóbal, un estudiante de 11 años. Cursos en línea, a tu ritmo y con certificado gratuito.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
-:root{--bg:#f4f6fb;--surf:#fff;--ink:#14213d;--mut:#4d5a78;--line:#d9dfec;--acc:#2f5bff;--acc2:#ffc93c;--onacc:#fff}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1730;--surf:#18223f;--ink:#eef1fa;--mut:#a9b4d0;--line:#2c3860;--acc:#7b97ff;--onacc:#0f1730}}
+:root{--bg:#f4f6fb;--surf:#fff;--ink:#14213d;--mut:#4d5a78;--line:#d9dfec;--acc:#2f5bff;--acc2:#ffc93c;--onacc:#fff;--ok:#0f8a5f;--bad:#c0392b}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1730;--surf:#18223f;--ink:#eef1fa;--mut:#a9b4d0;--line:#2c3860;--acc:#7b97ff;--onacc:#0f1730;--ok:#4cd1a0;--bad:#ff8a7a}}
+:root[data-theme=dark]{--bg:#0f1730;--surf:#18223f;--ink:#eef1fa;--mut:#a9b4d0;--line:#2c3860;--acc:#7b97ff;--onacc:#0f1730;--ok:#4cd1a0;--bad:#ff8a7a}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -19,12 +24,12 @@ a{color:var(--acc)}
 :focus-visible{outline:3px solid var(--acc2);outline-offset:3px}
 .wrap{max-width:1060px;margin:auto;padding:0 20px}
 .top{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:60px;flex-wrap:wrap;gap:8px 16px;padding-top:6px;padding-bottom:6px}
 .logo{font:700 22px "Bricolage Grotesque",sans-serif;color:var(--ink);text-decoration:none}
 .logo b{color:var(--acc)}
 .logo{display:inline-flex;align-items:center;gap:10px}
 .logo img{width:30px;height:30px;display:block;border-radius:6px}
-.top nav{display:flex;gap:20px}
+.top nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
 .top nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:16px}
 .top nav a:hover{color:var(--acc)}
 .hero{padding:70px 0 60px}
@@ -72,6 +77,26 @@ footer p{max-width:70ch;margin:0 0 8px}
 .js .edades li.rv{transform:translateY(22px) scale(.85)}
 .js .edades li.rv.in{transform:none}
 @media(prefers-reduced-motion:reduce){.js .rv,.js .rv.in,.js #sobre-mi h2.rv::after{transition:none;opacity:1;transform:none}.js #sobre-mi h2.rv::after{width:90px}}
+
+.tema{font:inherit;font-size:15px;background:var(--surf);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:4px 8px;cursor:pointer}
+dialog{background:var(--surf);color:var(--ink);border:1px solid var(--line);border-radius:14px;max-width:480px;width:calc(100% - 40px);padding:22px}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog h2{font-size:1.5rem;margin-bottom:8px}
+.rep{display:grid;grid-template-columns:240px 1fr;gap:34px;align-items:center}
+.dona{width:220px;height:220px;position:relative}
+.dona svg{width:100%;height:100%;transform:rotate(-90deg)}
+.dona circle{fill:none;stroke-width:26}
+.dona .fondo{stroke:var(--bad)}
+.dona .arco{stroke:var(--ok);transition:stroke-dasharray 1.1s ease}
+.dona .centro{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font:700 2.4rem "Bricolage Grotesque",sans-serif;line-height:1}
+.dona .centro small{display:block;font:600 .9rem "Source Sans 3",sans-serif;color:var(--mut);margin-top:4px}
+.leg{list-style:none;margin:0 0 14px;padding:0}
+.leg li{display:flex;align-items:center;gap:10px;margin:6px 0}
+.leg i{display:inline-block;width:16px;height:16px;border-radius:4px}
+.rcur{list-style:none;margin:0;padding:0;color:var(--mut);font-size:16px}
+.rcur li{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:4px 0}
+@media(max-width:760px){.rep{grid-template-columns:1fr}.dona{margin:auto}}
+@media(prefers-reduced-motion:reduce){.dona .arco{transition:none}}
 </style>
 </head>
 <body>
@@ -83,6 +108,7 @@ footer p{max-width:70ch;margin:0 0 8px}
       <a href="/cursos/">Cursos</a>
       <a href="/clase/">Salón de clases</a>
       <a href="#sobre-mi">Sobre mí</a>
+      <select id="tema" class="tema" aria-label="Tema de color"><option value="auto">Predeterminado</option><option value="light">Claro</option><option value="dark">Oscuro</option></select>
     </nav>
   </div>
 </header>
@@ -91,7 +117,7 @@ footer p{max-width:70ch;margin:0 0 8px}
   <div class="wrap hero">
     <h1>Aprender tecnología <span>no debería costar nada.</span></h1>
     <p>TECNOVARA es un proyecto de educación gratuita creado por Cristóbal, un estudiante de 11 años. Aquí encuentras cursos sencillos, con ejemplos prácticos, para aprender a tu ritmo.</p>
-    <a class="btn" href="/cursos/">Ver cursos</a><a class="btn alt" href="#sobre-mi">Conoce al creador</a>
+    <a class="btn" href="/cursos/">Ver cursos</a><a class="btn alt" href="#sobre-mi">Conoce al creador</a><button class="btn alt" id="inst">Instalar app</button>
   </div>
 
   <section id="que-es" class="alt-bg">
@@ -111,6 +137,21 @@ footer p{max-width:70ch;margin:0 0 8px}
       <h2>Cursos</h2>
       <p class="lead">Todos nuestros cursos son gratuitos y puedes hacerlos a tu ritmo. Mira la lista completa y elige el que quieras aprender.</p>
       <a class="btn" href="/cursos/">Ver lista de cursos</a>
+    </div>
+  </section>
+
+  <section id="repaso" hidden>
+    <div class="wrap">
+      <h2>Vamos a repasar cómo te ha ido...</h2>
+      <p class="lead" id="rtxt"></p>
+      <div class="rep" id="rbox">
+        <div class="dona" id="dona" role="img" aria-label="Gráfico de aciertos"></div>
+        <div>
+          <ul class="leg"><li><i style="background:var(--ok)"></i><span id="lok"></span></li><li><i style="background:var(--bad)"></i><span id="lno"></span></li></ul>
+          <ul class="rcur" id="rcur"></ul>
+        </div>
+      </div>
+      <p><a class="btn" href="/cursos/">Hacer una prueba para mejorar</a></p>
     </div>
   </section>
 
@@ -160,6 +201,73 @@ footer p{max-width:70ch;margin:0 0 8px}
     es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}});
   },{threshold:.2});
   els.forEach(function(el){io.observe(el)});
+})();
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}</script>
+<dialog id="dinst" aria-labelledby="tdinst">
+  <h2 id="tdinst">Instalar TECNOVARA</h2>
+  <p>Tu navegador no mostró la instalación automática. Prueba así:</p>
+  <ul>
+    <li><b>Chrome o Edge en computador:</b> busca el ícono de instalar en la barra de direcciones, o abre el menú ⋮ y elige «Instalar TECNOVARA» (en Edge: Aplicaciones → Instalar este sitio como una aplicación).</li>
+    <li><b>Android (Chrome):</b> menú ⋮ → «Instalar app» o «Agregar a pantalla de inicio».</li>
+    <li><b>iPhone o iPad (Safari):</b> toca Compartir y luego «Agregar a pantalla de inicio».</li>
+  </ul>
+  <p style="color:var(--mut)">Si ya la instalaste, ábrela desde el menú Inicio.</p>
+  <button class="btn" id="cinst">Entendido</button>
+</dialog>
+<script>
+(function(){
+  /* Tema: predeterminado / claro / oscuro */
+  var s=document.getElementById("tema"),r=document.documentElement,cur="auto";
+  try{cur=localStorage.getItem("tecnovara-tema")||"auto"}catch(e){}
+  if(cur!=="light"&&cur!=="dark")cur="auto";
+  s.value=cur;
+  s.addEventListener("change",function(){
+    var v=s.value;
+    try{if(v==="auto")localStorage.removeItem("tecnovara-tema");else localStorage.setItem("tecnovara-tema",v)}catch(e){}
+    if(v==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",v);
+  });
+})();
+(function(){
+  /* Botón Instalar app: siempre visible, con instrucciones si el navegador no ofrece la instalación */
+  var ev=null,b=document.getElementById("inst"),dlg=document.getElementById("dinst");
+  var yaApp=(window.matchMedia&&window.matchMedia("(display-mode: standalone)").matches)||window.navigator.standalone;
+  if(yaApp){b.hidden=true;return}
+  window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();ev=e});
+  window.addEventListener("appinstalled",function(){b.hidden=true});
+  b.addEventListener("click",function(){
+    if(ev){ev.prompt();ev.userChoice.then(function(){ev=null});return}
+    if(dlg&&dlg.showModal)dlg.showModal();
+  });
+  var c=document.getElementById("cinst");if(c)c.addEventListener("click",function(){dlg.close()});
+})();
+(function(){
+  /* Repaso: aparece al terminar todos los cursos */
+  var CURSOS=[["tecnovara-canva",10,"Canva (Parte 1)"],["tecnovara-canva2",6,"Canva (Parte 2)"],["tecnovara-gmail",7,"Gmail (Parte 1)"],["tecnovara-gmail2",6,"Gmail (Parte 2)"],["tecnovara-gmail3",6,"Gmail (Parte 3)"],["tecnovara-forms",8,"Google Forms"]];
+  function leer(k){try{return JSON.parse(localStorage.getItem(k)||"null")}catch(e){return null}}
+  var todos=CURSOS.every(function(c){var st=leer(c[0]);return st&&Array.isArray(st.done)&&st.done.length>=c[1]&&st.quiz&&st.quiz.fin&&st.quiz.fin.pass});
+  if(!todos)return;
+  var sec=document.getElementById("repaso"),ac=leer("tecnovara-aciertos")||{},N=0,T=0,filas=[];
+  CURSOS.forEach(function(c){var q=ac[c[0]]||{},n=0,t=0;Object.keys(q).forEach(function(k){n+=q[k].n||0;t+=q[k].t||0});N+=n;T+=t;if(t)filas.push([c[2],n,t])});
+  sec.hidden=false;
+  var txt=document.getElementById("rtxt"),box=document.getElementById("rbox");
+  if(!T){txt.textContent="¡Terminaste todos los cursos! Para ver tu porcentaje de aciertos, vuelve a responder alguna evaluación.";box.hidden=true;return}
+  var pct=Math.round(N/T*100),no=100-pct;
+  txt.textContent=pct>=80?"¡Excelente! Dominas lo que aprendiste.":pct>=60?"Vas muy bien. Repasa lo que se te hizo difícil.":"Puedes mejorar: repasa los cursos y practica en Modo Estudioso.";
+  var C=2*Math.PI*100,svgNS="http://www.w3.org/2000/svg";
+  var svg=document.createElementNS(svgNS,"svg");svg.setAttribute("viewBox","0 0 240 240");svg.setAttribute("aria-hidden","true");
+  function circ(cls){var e=document.createElementNS(svgNS,"circle");e.setAttribute("cx","120");e.setAttribute("cy","120");e.setAttribute("r","100");e.setAttribute("class",cls);return e}
+  var fondo=circ("fondo"),arco=circ("arco");arco.setAttribute("stroke-dasharray","0 "+C);
+  if(pct===0)fondo.setAttribute("stroke","var(--bad)");
+  svg.appendChild(fondo);svg.appendChild(arco);
+  var d=document.getElementById("dona");d.appendChild(svg);
+  var cen=document.createElement("div");cen.className="centro";cen.innerHTML="<div>"+pct+"%<small>aciertos</small></div>";d.appendChild(cen);
+  d.setAttribute("aria-label","Acertaste el "+pct+" por ciento y no lograste el "+no+" por ciento");
+  setTimeout(function(){arco.setAttribute("stroke-dasharray",(C*pct/100)+" "+C)},200);
+  document.getElementById("lok").textContent="Acertaste: "+pct+" % ("+N+" de "+T+" respuestas)";
+  document.getElementById("lno").textContent="No lograste: "+no+" % ("+(T-N)+" respuestas)";
+  var ul=document.getElementById("rcur");
+  filas.forEach(function(f){var li=document.createElement("li"),a=document.createElement("span"),b=document.createElement("span");a.textContent=f[0];b.textContent=f[1]+" de "+f[2]+" ("+Math.round(f[1]/f[2]*100)+" %)";li.appendChild(a);li.appendChild(b);ul.appendChild(li)});
 })();
 </script>
 </body>
