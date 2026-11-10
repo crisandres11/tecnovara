@@ -239,7 +239,7 @@ document.addEventListener("click",e=>{
     if(miss){$("fb").innerHTML='<span class="bad">Responde todas las preguntas.</span>';return}
     const need=k==="fin"?3:qs.length-(qs.length>2?1:0),pass=n>=need;
     const msg=`<span class="${pass?"ok":"bad"}">Acertaste ${n} de ${qs.length}. ${pass?"¡Aprobado!":"Repasa la lección e inténtalo de nuevo."}</span>`;
-    st.quiz[k]={pass,msg};$("fb").innerHTML=msg;save();if(L[st.cur].final)certUI()}
+    st.quiz[k]={pass,msg,n,total:qs.length};try{var ac=JSON.parse(localStorage.getItem("tecnovara-aciertos")||"{}");ac["tecnovara-canva2"]=ac["tecnovara-canva2"]||{};ac["tecnovara-canva2"][k]={n:n,t:qs.length};localStorage.setItem("tecnovara-aciertos",JSON.stringify(ac))}catch(err){}$("fb").innerHTML=msg;save();if(L[st.cur].final)certUI()}
 });
 render();
 if(st.done.length&&$("start"))$("start").textContent="Continuar el curso";
