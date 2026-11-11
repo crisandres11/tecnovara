@@ -6,6 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TECNOVARA · Educación gratuita creada por un estudiante</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="canonical" href="https://tecnovara.pages.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TECNOVARA">
+<meta property="og:locale" content="es_CL">
+<meta property="og:title" content="TECNOVARA · Educación gratuita creada por un estudiante">
+<meta property="og:description" content="TECNOVARA es un proyecto de educación gratuita creado por Cristóbal, un estudiante de 11 años. Cursos en línea, a tu ritmo y con certificado gratuito.">
+<meta property="og:url" content="https://tecnovara.pages.dev/">
+<meta property="og:image" content="https://tecnovara.pages.dev/assets/icon-512.png">
+<meta name="twitter:card" content="summary">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2f5bff">
 <meta name="description" content="TECNOVARA es un proyecto de educación gratuita creado por Cristóbal, un estudiante de 11 años. Cursos en línea, a tu ritmo y con certificado gratuito.">
@@ -98,6 +107,7 @@ dialog h2{font-size:1.5rem;margin-bottom:8px}
 @media(max-width:760px){.rep{grid-template-columns:1fr}.dona{margin:auto}}
 @media(prefers-reduced-motion:reduce){.dona .arco{transition:none}}
 </style>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "name": "TECNOVARA", "url": "https://tecnovara.pages.dev/", "inLanguage": "es"}, {"@context": "https://schema.org", "@type": "Organization", "name": "TECNOVARA", "url": "https://tecnovara.pages.dev/", "logo": "https://tecnovara.pages.dev/assets/icon-512.png", "description": "Proyecto de educación gratuita creado por un estudiante."}]</script>
 </head>
 <body>
 <header class="top">
@@ -243,7 +253,7 @@ dialog h2{font-size:1.5rem;margin-bottom:8px}
 })();
 (function(){
   /* Repaso: aparece al terminar todos los cursos */
-  var CURSOS=[["tecnovara-canva",10,"Canva (Parte 1)"],["tecnovara-canva2",6,"Canva (Parte 2)"],["tecnovara-gmail",7,"Gmail (Parte 1)"],["tecnovara-gmail2",6,"Gmail (Parte 2)"],["tecnovara-gmail3",6,"Gmail (Parte 3)"],["tecnovara-forms",8,"Google Forms"]];
+  var CURSOS=[["tecnovara-canva",10,"Canva (Parte 1)"],["tecnovara-canva2",6,"Canva (Parte 2)"],["tecnovara-gmail",7,"Gmail (Parte 1)"],["tecnovara-gmail2",6,"Gmail (Parte 2)"],["tecnovara-gmail3",6,"Gmail (Parte 3)"],["tecnovara-forms",8,"Google Forms"],["tecnovara-docs",6,"Google Docs"]];
   function leer(k){try{return JSON.parse(localStorage.getItem(k)||"null")}catch(e){return null}}
   var todos=CURSOS.every(function(c){var st=leer(c[0]);return st&&Array.isArray(st.done)&&st.done.length>=c[1]&&st.quiz&&st.quiz.fin&&st.quiz.fin.pass});
   if(!todos)return;
