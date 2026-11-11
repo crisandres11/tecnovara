@@ -253,7 +253,7 @@ dialog h2{font-size:1.5rem;margin-bottom:8px}
 })();
 (function(){
   /* Repaso: aparece al terminar todos los cursos */
-  var CURSOS=[["tecnovara-canva",10,"Canva (Parte 1)"],["tecnovara-canva2",6,"Canva (Parte 2)"],["tecnovara-gmail",7,"Gmail (Parte 1)"],["tecnovara-gmail2",6,"Gmail (Parte 2)"],["tecnovara-gmail3",6,"Gmail (Parte 3)"],["tecnovara-forms",8,"Google Forms"],["tecnovara-docs",6,"Google Docs"]];
+  var CURSOS=[["tecnovara-canva",10,"Canva (Parte 1)"],["tecnovara-canva2",6,"Canva (Parte 2)"],["tecnovara-gmail",7,"Gmail (Parte 1)"],["tecnovara-gmail2",6,"Gmail (Parte 2)"],["tecnovara-gmail3",6,"Gmail (Parte 3)"],["tecnovara-forms",8,"Google Forms"],["tecnovara-docs",6,"Google Docs"],["tecnovara-meet",5,"Google Meet"]];
   function leer(k){try{return JSON.parse(localStorage.getItem(k)||"null")}catch(e){return null}}
   var todos=CURSOS.every(function(c){var st=leer(c[0]);return st&&Array.isArray(st.done)&&st.done.length>=c[1]&&st.quiz&&st.quiz.fin&&st.quiz.fin.pass});
   if(!todos)return;
