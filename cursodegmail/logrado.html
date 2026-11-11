@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>¡Curso completado! · TECNOVARA</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
+<meta name="robots" content="noindex">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2f5bff">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
@@ -51,6 +52,12 @@ footer{max-width:900px;margin:auto;padding:0 20px 40px;color:var(--mut);font-siz
       <p>Escribe tu nombre tal como quieres que aparezca.</p>
       <p><input type="text" id="nm" aria-label="Tu nombre completo" placeholder="Nombre y apellido" maxlength="60"><button class="btn" id="mk">Generar certificado</button></p>
       <div id="out"></div>
+    </div>
+
+    <div class="box">
+      <h2>¿Qué te pareció el curso?</h2>
+      <p>Tu opinión nos ayuda a mejorar.</p>
+      <div class="valora" data-rating="gmail"></div>
     </div>
 
     <div class="actions">
@@ -115,5 +122,6 @@ footer{max-width:900px;margin:auto;padding:0 20px 40px;color:var(--mut);font-siz
   a.href=a.getAttribute("data-base")+id;
 })();
 </script>
+<script src="/valoraciones.js" defer></script>
 </body>
 </html>
