@@ -1,5 +1,5 @@
 /* Service worker de TECNOVARA. Si cambias archivos importantes, sube el número de versión. */
-const V = "tecnovara-v8";
+const V = "tecnovara-v9";
 const PRE = [
   "/", "/cursos/", "/clase/", "/prueba/",
   "/cursodecanva/", "/cursodecanva/logrado/",
