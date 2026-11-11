@@ -13,12 +13,24 @@
     ".rt-st{position:relative;display:inline-block;width:90px;height:18px;background:url(/assets/StarNoColor.png) left center/18px 18px repeat-x}" +
     ".rt-fill{position:absolute;left:0;top:0;height:100%;background:url(/assets/Star.png) left center/18px 18px repeat-x}" +
     ".rt-msg{font-size:15px;color:var(--ok,#0f8a5f);min-height:1.4em;font-weight:600}" +
-    ".valora{margin-top:12px}";
+    ".valora{margin-top:12px}" +
+    /* Si las imágenes de las estrellas no cargan, se usan estrellas de texto para que siempre se vea dónde votar */
+    ".rt-sinimg .rt-b{background:none;width:auto;padding:0 2px}" +
+    ".rt-sinimg .rt-b::before{content:'\\2605';font-size:30px;line-height:1;color:var(--line,#ccc)}" +
+    ".rt-sinimg .rt-b.on::before{color:#f5a623}" +
+    ".rt-sinimg .rt-st{background:none;width:auto;height:auto;font-size:18px;line-height:1;letter-spacing:1px}" +
+    ".rt-sinimg .rt-st::before{content:'\\2605\\2605\\2605\\2605\\2605';color:var(--line,#ccc)}" +
+    ".rt-sinimg .rt-fill{background:none;overflow:hidden;white-space:nowrap}" +
+    ".rt-sinimg .rt-fill::before{content:'\\2605\\2605\\2605\\2605\\2605';color:#f5a623}";
+  var probe = new Image();
+  probe.onerror = function () { document.documentElement.classList.add("rt-sinimg"); };
+  probe.src = "/assets/StarNoColor.png";
   var sty = document.createElement("style");
   sty.textContent = css;
   document.head.appendChild(sty);
 
   var CFG = "";
+  var MIN_VOTOS = 5; /* con menos votos no se declaran valoraciones a Google */
 
   function gen(n) {
     var a = "abcdefghijklmnopqrstuvwxyz0123456789", b = new Uint8Array(n), o = "";
@@ -39,7 +51,10 @@
   function leer(id) {
     if (!CFG) return Promise.resolve(demoLeer()[id] || null);
     return fetch(CFG + "/valoraciones/" + id + ".json").then(function (r) {
-      if (!r.ok) throw new Error(r.status);
+      if (!r.ok) {
+        try { console.warn("[TECNOVARA] No se pudieron leer las valoraciones (código " + r.status + "). Si es 401, revisa las reglas de Firebase: falta permitir lectura en \"valoraciones\"."); } catch (e) {}
+        throw new Error(r.status);
+      }
       return r.json();
     });
   }
@@ -66,6 +81,27 @@
     var pct = Math.round(r.avg / 5 * 100);
     return '<div class="rt-avg"><span class="rt-st" aria-hidden="true"><span class="rt-fill" style="width:' + pct + '%"></span></span>' +
       '<span>' + r.avg.toFixed(1).replace(".", ",") + ' de 5 · ' + r.n + (r.n === 1 ? " valoración" : " valoraciones") + "</span></div>";
+  }
+
+  /* Agrega aggregateRating al JSON-LD del curso, solo con votos reales suficientes */
+  function datosEstructurados(r) {
+    if (r.n < MIN_VOTOS) return;
+    var nodos = document.querySelectorAll('script[type="application/ld+json"]');
+    Array.prototype.forEach.call(nodos, function (n) {
+      try {
+        var d = JSON.parse(n.textContent);
+        if (d && d["@type"] === "Course") {
+          d.aggregateRating = {
+            "@type": "AggregateRating",
+            ratingValue: r.avg.toFixed(1),
+            bestRating: "5",
+            worstRating: "1",
+            ratingCount: r.n
+          };
+          n.textContent = JSON.stringify(d);
+        }
+      } catch (e) {}
+    });
   }
 
   function montar(el) {
@@ -99,8 +135,15 @@
       el.querySelector(".rt-in").addEventListener("mouseleave", function () { resaltar(r.mine); });
     }
 
-    leer(id).then(function (o) { pintar(resumen(o)); }).catch(function () {
-      el.innerHTML = '<div class="rt-avg"><span>No se pudieron cargar las valoraciones</span></div>';
+    leer(id).then(function (o) {
+      var r = resumen(o);
+      pintar(r);
+      if (el.getAttribute("data-schema") === "1") datosEstructurados(r);
+    }).catch(function () {
+      if (solo) { el.innerHTML = ""; return; }
+      pintar({ n: 0, avg: 0, mine: 0 });
+      var m = el.querySelector(".rt-msg");
+      if (m) { m.textContent = "Por ahora no podemos mostrar el promedio."; m.style.color = "var(--mut,#555)"; }
     });
   }
 
