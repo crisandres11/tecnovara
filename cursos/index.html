@@ -44,6 +44,7 @@ a.curso:hover{border-color:var(--acc)}
 .tags li{border:1px solid var(--line);border-radius:999px;padding:2px 12px;font-size:15px;background:var(--bg)}
 .tags .free{background:var(--acc2);border-color:var(--acc2);color:#14213d;font-weight:600}
 .go{color:var(--onacc);background:var(--acc);border-radius:10px;padding:11px 20px;font-weight:600;white-space:nowrap}
+button.go{border:0;font:inherit;font-weight:600;cursor:pointer}
 .curso.soon{border-style:dashed;background:transparent;color:var(--mut)}
 .curso.soon h2{color:var(--ink)}
 footer{max-width:1000px;margin:auto;padding:0 20px 40px;color:var(--mut);font-size:14px}
@@ -161,11 +162,12 @@ footer{max-width:1000px;margin:auto;padding:0 20px 40px;color:var(--mut);font-si
       </a>
     </li>
     <li>
-      <div class="curso soon">
+      <div class="curso">
         <div>
-          <h2>Más cursos próximamente</h2>
-          <p>Estamos preparando nuevos cursos. Vuelve pronto.</p>
+          <h2>Ir a parte 2 de cursos...</h2>
+          <p>Los cursos mejoran y son más avanzados</p>
         </div>
+        <button class="go" id="irp2" type="button">Ir</button>
       </div>
     </li>
   </ul>
@@ -189,5 +191,23 @@ document.querySelectorAll("a.curso[data-key]").forEach(function(a){
 </script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}</script>
 <script src="/valoraciones.js" defer></script>
+<script>
+(function(){
+  /* Botón "Ir": si no terminó todos los cursos, pide confirmación antes de avanzar */
+  var b=document.getElementById("irp2");if(!b)return;
+  function leer(k){try{return JSON.parse(localStorage.getItem(k)||"null")}catch(e){return null}}
+  function terminoTodos(){
+    var cs=document.querySelectorAll("a.curso[data-key]");
+    return Array.prototype.every.call(cs,function(a){
+      var st=leer(a.getAttribute("data-key")),t=+a.getAttribute("data-total");
+      return st&&Array.isArray(st.done)&&st.done.length>=t&&st.quiz&&st.quiz.fin&&st.quiz.fin.pass;
+    });
+  }
+  b.addEventListener("click",function(){
+    if(!terminoTodos()&&!window.confirm("¿Estás seguro de avanzar?"))return;
+    window.location.href="/cursos/parte2/";
+  });
+})();
+</script>
 </body>
 </html>
