@@ -1,4 +1,4 @@
-const V = "tecnovara-v10";
+const V = "tecnovara-v11";
 const PRE = [
   "/", "/cursos/", "/clase/", "/prueba/",
   "/cursodecanva/", "/cursodecanva/logrado/",
@@ -9,6 +9,7 @@ const PRE = [
   "/cursodegoogleforms/", "/cursodegoogleforms/logrado/",
   "/cursodegoogledocs/", "/cursodegoogledocs/logrado/",
   "/cursodegooglemeet/", "/cursodegooglemeet/logrado/",
+  "/cursodeclassroom/", "/cursodeclassroom/logrado/",
   "/favicon.ico", "/valoraciones.js", "/assets/Star.png", "/assets/StarNoColor.png", "/assets/icon-192.png", "/assets/icon-512.png",
   "/assets/Canva.png", "/assets/Canva1.png", "/assets/Canva2.png",
   "/assets/CanvaPanel.png", "/assets/CanvaTama%C3%B1o.png", "/assets/CanvaColor.png", "/assets/CanvaCreado.png",
@@ -17,6 +18,7 @@ const PRE = [
   "/assets/Gmail_3_1.png", "/assets/Gmail_3_2.png", "/assets/Gmail_3_3.png", "/assets/Gmail_3_4.png", "/assets/Gmail_3_5.png",
   "/assets/GmailP2.png", "/assets/GmailP3.png",
   "/assets/GoogleMeet1.png", "/assets/GoogleMeet2.png", "/assets/GoogleMeet3.png", "/assets/GoogleMeet4.png",
+  "/assets/Classroom1.png", "/assets/Classroom2.png", "/assets/Classroom3.png",
   "/assets/GoogleDocs1.png", "/assets/GoogleDocs2.png", "/assets/GoogleDocs3.png",
   "/assets/GoogleForms.png", "/assets/GoogleForms1.png", "/assets/GoogleForms2.png",
   "/assets/GoogleForms3.png", "/assets/GoogleForms4.png", "/assets/GoogleForms5.png",
