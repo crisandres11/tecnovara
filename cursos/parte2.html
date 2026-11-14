@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursos, parte 2 · TECNOVARA</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2f5bff">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#f4f6fb;--surf:#fff;--ink:#14213d;--mut:#4d5a78;--line:#d9dfec;--acc:#2f5bff;--acc2:#ffc93c;--onacc:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1730;--surf:#18223f;--ink:#eef1fa;--mut:#a9b4d0;--line:#2c3860;--acc:#7b97ff;--onacc:#0f1730}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 "Source Sans 3",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+h1{margin:0 0 10px;font-size:clamp(2.2rem,6vw,3.6rem);letter-spacing:-.02em}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:3px}
+.top{border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.in{max-width:1000px;margin:auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:inline-flex;align-items:center;gap:10px;font:700 21px "Bricolage Grotesque",sans-serif;color:var(--ink);text-decoration:none}
+.logo img{width:28px;height:28px;border-radius:6px}.logo b{color:var(--acc)}
+.in a.b{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+main{max-width:1000px;margin:auto;padding:48px 20px 60px}
+.lead{color:var(--mut);max-width:56ch;margin:0 0 34px}
+.lista{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.curso{display:grid;grid-template-columns:1fr auto;gap:10px 24px;align-items:center;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:24px;text-decoration:none;color:var(--ink)}
+a.curso:hover{border-color:var(--acc)}
+.curso h2{font-size:1.6rem}
+.curso p{margin:6px 0 10px;color:var(--mut);max-width:62ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.tags li{border:1px solid var(--line);border-radius:999px;padding:2px 12px;font-size:15px;background:var(--bg)}
+.tags .free{background:var(--acc2);border-color:var(--acc2);color:#14213d;font-weight:600}
+.go{color:var(--onacc);background:var(--acc);border-radius:10px;padding:11px 20px;font-weight:600;white-space:nowrap}
+.prog{margin-top:12px;font-size:15px;color:var(--mut)}.prog .bar{height:8px;background:var(--line);border-radius:8px;overflow:hidden;max-width:320px;margin-bottom:4px}.prog .bar i{display:block;height:100%;background:#0f8a5f}
+.btn{display:inline-block;background:transparent;color:var(--ink);border:1px solid var(--line);font:600 17px "Source Sans 3",sans-serif;border-radius:10px;padding:12px 22px;text-decoration:none;margin-top:26px}
+@media(max-width:640px){.curso{grid-template-columns:1fr}.go{justify-self:start}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="logo" href="/"><img src="/favicon.ico" alt=""><span>TECNO<b>VARA</b></span></a>
+  <a class="b" href="/cursos/">← Cursos</a>
+</div></header>
+<main>
+  <h1>Cursos, parte 2</h1>
+  <p class="lead">Aquí están los cursos más avanzados de TECNOVARA. Son gratuitos, autodidactas y tienen certificado de finalización sin costo. Pronto habrá más.</p>
+
+  <ul class="lista">
+    <li>
+      <a class="curso" href="/cursodeclassroom/" data-key="tecnovara-classroom" data-total="6">
+        <div>
+          <h2>Curso de Classroom - Sección 2: Cómo crear una clase</h2>
+          <p>Aprende a crear una clase en Google Classroom e invitar a tus alumnos con un código, paso a paso.</p>
+          <ul class="tags"><li>Herramientas digitales</li><li>Principiante</li><li>Autodidacta</li><li>6 lecciones</li><li class="free">100 % gratuito</li></ul>
+          <div class="prog" aria-live="polite"></div>
+          <div class="valora" data-rating="classroom" data-readonly="1"></div>
+        </div>
+        <span class="go">Empezar curso</span>
+      </a>
+    </li>
+  </ul>
+
+  <a class="btn" href="/cursos/">Volver a los cursos</a>
+</main>
+<script>
+document.querySelectorAll("a.curso[data-key]").forEach(function(a){
+  try{
+    var st=JSON.parse(localStorage.getItem(a.dataset.key)||"null");
+    if(!st||!Array.isArray(st.done)||!st.done.length)return;
+    var total=+a.dataset.total,n=Math.min(st.done.length,total);
+    var ok=n>=total&&st.quiz&&st.quiz.fin&&st.quiz.fin.pass;
+    var p=a.querySelector(".prog"),bar=document.createElement("div"),i=document.createElement("i"),t=document.createElement("span");
+    bar.className="bar";i.style.width=Math.round(n/total*100)+"%";bar.appendChild(i);
+    t.textContent=n+" de "+total+" lecciones"+(ok?" · ✓ Completado":"");
+    p.appendChild(bar);p.appendChild(t);
+    a.querySelector(".go").textContent=ok?"Repasar curso":"Continuar curso";
+  }catch(e){}
+});
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}</script>
+<script src="/valoraciones.js" defer></script>
+</body>
+</html>
