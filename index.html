@@ -49,12 +49,14 @@
     .top nav a { color:var(--ink); text-decoration:none; font-weight:600; font-size:16px; }
     .top nav a:hover { color:var(--acc); }
     .tema { font:inherit; font-size:15px; background:var(--surf); color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:4px 8px; cursor:pointer; }
-    .hero { padding:70px 0 60px; }
+    .hero { padding:70px 0 60px; position:relative; isolation:isolate; }
     .hero h1 { font-size:clamp(2.6rem,8vw,5.4rem); max-width:14ch; letter-spacing:-.02em; }
-    .hero h1 span { background:linear-gradient(transparent 62%,var(--acc2) 62%); }
+    .hero h1 span { background:linear-gradient(transparent 62%,var(--acc2) 62%) no-repeat 0 0 / 0% 100%; animation:marca .9s .7s ease forwards; }
     .hero p { max-width:56ch; color:var(--mut); font-size:1.2rem; margin:22px 0 28px; }
     .btn { display:inline-block; background:var(--acc); color:var(--onacc); text-decoration:none; font-weight:600; border:0; cursor:pointer; border-radius:10px; padding:13px 24px; font:600 17px "Source Sans 3",sans-serif; transition:transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .btn[hidden] { display:none; }
     .btn:hover { transform:translateY(-3px); box-shadow:0 8px 22px rgba(47,91,255,.2); }
+    .btn:active { transform:translateY(0) scale(.98); }
     .btn.alt { background:transparent; color:var(--ink); border:1px solid var(--line); margin-left:8px; }
     section { padding:56px 0; }
     section h2 { font-size:clamp(1.8rem,4.5vw,2.6rem); margin-bottom:12px; }
@@ -86,11 +88,39 @@
     .why > div { transition:transform .25s ease; }
     .why > div:hover { transform:translateY(-5px); }
     @keyframes heroIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+    /* Subrayado que se dibuja en el título */
+    @keyframes marca { to { background-size:100% 100%; } }
+
+    /* Círculos de fondo que flotan despacio en la portada */
+    .hero::before, .hero::after { content:""; position:absolute; border-radius:50%; z-index:-1; pointer-events:none; }
+    .hero::before { width:200px; height:200px; right:20px; top:30px; background:var(--acc); opacity:.1; animation:flota 9s ease-in-out infinite alternate; }
+    .hero::after { width:90px; height:90px; right:190px; bottom:40px; background:var(--acc2); opacity:.35; animation:flota 7s -3s ease-in-out infinite alternate; }
+    @keyframes flota { from { transform:translateY(0) scale(1); } to { transform:translateY(-22px) scale(1.07); } }
+
+    /* Las tarjetas y los pasos aparecen uno tras otro */
+    .js .reveal.visible .why > div, .js .reveal.visible .steps li { animation:itemIn .6s var(--d,0s) cubic-bezier(.2,.7,.2,1) backwards; }
+    .why > div:nth-child(2), .steps li:nth-child(2) { --d:.12s; }
+    .why > div:nth-child(3), .steps li:nth-child(3) { --d:.24s; }
+    .steps li:nth-child(4) { --d:.36s; }
+    @keyframes itemIn { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+
+    /* Subrayado animado en los enlaces del menú */
+    .top nav a:not(.tema) { position:relative; }
+    .top nav a:not(.tema)::after { content:""; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--acc); transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
+    .top nav a:not(.tema):hover::after, .top nav a:not(.tema):focus-visible::after { transform:scaleX(1); }
+
+    /* Botón de contacto con un aro que late suavemente */
+    .btn.pulse { animation:late 2.6s ease-out infinite; }
+    .btn.pulse:hover { animation:none; }
+    @keyframes late { 0% { box-shadow:0 0 0 0 rgba(47,91,255,.45); } 70%, 100% { box-shadow:0 0 0 16px rgba(47,91,255,0); } }
+
     @media(prefers-reduced-motion:reduce) {
       *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
       .js .reveal { opacity:1; transform:none; }
+      .btn.pulse { animation:none; }
     }
-    @media(max-width:760px) { .why { grid-template-columns:1fr; } .top nav { gap:12px; } .btn.alt { margin:10px 0 0; } .hero { padding:44px 0; } }
+    @media(max-width:760px) { .why { grid-template-columns:1fr; } .top nav { gap:12px; } .btn.alt { margin:10px 0 0; } .hero { padding:44px 0; } .hero::before { width:130px; height:130px; right:10px; top:10px; } .hero::after { right:110px; bottom:10px; } }
   </style>
   <script type="application/ld+json">
   { "@context":"https://schema.org", "@type":"WebSite", "name":"TECNOVARA", "url":"https://tecnovara.pages.dev/", "inLanguage":"es", "description":"Academia digital independiente con cursos gratuitos." }
@@ -105,6 +135,7 @@
       <a href="/cursos/">Cursos</a>
       <a href="/clase/">Salón de clases</a>
       <a href="#proyecto">El proyecto</a>
+      <a href="/contacto/">Contacto</a>
       <select id="tema" class="tema" aria-label="Tema de color"><option value="auto">Predeterminado</option><option value="light">Claro</option><option value="dark">Oscuro</option></select>
     </nav>
   </div>
@@ -154,8 +185,15 @@
       <div class="note">TECNOVARA es un proyecto educativo independiente. No representa ni está oficialmente asociado con Canva, Google u otras marcas mencionadas en sus cursos.</div>
     </div>
   </section>
+  <section id="contacto" class="alt-bg reveal">
+    <div class="wrap about">
+      <h2>¿Algo que contarnos?</h2>
+      <p class="lead">Reporta un error o cuéntanos qué te parece TECNOVARA. Tu opinión importa.</p>
+      <a class="btn pulse" href="/contacto/">Contacto</a>
+    </div>
+  </section>
 </main>
-<footer><div class="wrap"><p><b>TECNOVARA</b> · Academia Digital</p><p>Aprende. Descubre. Progresa.</p><p>Proyecto educativo independiente y gratuito.</p></div></footer>
+<footer><div class="wrap"><p><b>TECNOVARA</b> · Academia Digital</p><p>Aprende. Descubre. Progresa.</p><p>Proyecto educativo independiente y gratuito.</p><p><a href="/contacto/">Contacto</a></p></div></footer>
 <dialog id="dinst" aria-labelledby="tdinst">
   <h2 id="tdinst">Instalar TECNOVARA</h2>
   <p>Tu navegador no mostró la instalación automática. Prueba así:</p>
