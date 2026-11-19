@@ -1,6 +1,6 @@
-const V = "tecnovara-v11";
+const V = "tecnovara-v12";
 const PRE = [
-  "/", "/cursos/", "/clase/", "/prueba/",
+  "/", "/cursos/", "/contacto/", "/clase/", "/prueba/",
   "/cursodecanva/", "/cursodecanva/logrado/",
   "/cursodecanva/parte2/", "/cursodecanva/parte2/logrado/",
   "/cursodegmail/", "/cursodegmail/logrado/",
