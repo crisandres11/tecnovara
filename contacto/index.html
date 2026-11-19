@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto · TECNOVARA</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="canonical" href="https://tecnovara.pages.dev/contacto/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TECNOVARA">
+<meta property="og:locale" content="es_CL">
+<meta property="og:title" content="Contacto · TECNOVARA">
+<meta property="og:description" content="Reporta un bug o glitch, o dinos qué te parece TECNOVARA. Escríbenos por correo o síguenos en Instagram y Facebook.">
+<meta property="og:url" content="https://tecnovara.pages.dev/contacto/">
+<meta property="og:image" content="https://tecnovara.pages.dev/assets/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2f5bff">
+<meta name="description" content="Reporta un bug o glitch, o dinos qué te parece TECNOVARA. Escríbenos por correo o síguenos en Instagram y Facebook.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#f4f6fb;--surf:#fff;--ink:#14213d;--mut:#4d5a78;--line:#d9dfec;--acc:#2f5bff;--acc2:#ffc93c;--onacc:#fff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1730;--surf:#18223f;--ink:#eef1fa;--mut:#a9b4d0;--line:#2c3860;--acc:#7b97ff;--onacc:#0f1730}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 "Source Sans 3",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:3px}
+.top{border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.in{max-width:820px;margin:auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:inline-flex;align-items:center;gap:10px;font:700 21px "Bricolage Grotesque",sans-serif;color:var(--ink);text-decoration:none}
+.logo img{width:28px;height:28px;border-radius:6px}.logo b{color:var(--acc)}
+.in nav{display:flex;gap:20px}
+.in nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+.in nav a[aria-current=page]{color:var(--acc)}
+main{max-width:820px;margin:auto;padding:48px 20px 60px}
+h1{font-size:clamp(2.4rem,7vw,4rem);letter-spacing:-.02em;margin-bottom:14px}
+.lead{font:600 1.35rem/1.35 "Bricolage Grotesque",system-ui,sans-serif;max-width:30ch;margin:0 0 18px}
+p{max-width:58ch;margin:0 0 14px}
+.redes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:10px}
+.red{display:block;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:20px 22px;text-decoration:none;color:var(--ink)}
+.red:hover{border-color:var(--acc)}
+.red h2{font-size:1.3rem;margin-bottom:4px}
+.red span{color:var(--mut);overflow-wrap:anywhere;font-size:16px}
+footer{max-width:820px;margin:auto;padding:0 20px 40px;color:var(--mut);font-size:14px}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="logo" href="/"><img src="/favicon.ico" alt=""><span>TECNO<b>VARA</b></span></a>
+  <nav aria-label="Principal"><a href="/">Inicio</a><a href="/cursos/">Cursos</a><a href="/contacto/" aria-current="page">Contacto</a></nav>
+</div></header>
+
+<main>
+  <h1>Contacto</h1>
+  <p class="lead">¿Necesitas reportar un bug/glitch o simplemente quieres darnos las felicitaciones?</p>
+  <p>Puedes hacerlo enviándonos un correo electrónico, en <a href="mailto:tecnovara@googlegroups.com">tecnovara@googlegroups.com</a>.</p>
+  <p>¡Tu opinión importa, no olvides seguirnos en Instagram, Facebook.</p>
+  <div class="redes">
+    <a class="red" href="https://www.instagram.com/tecnovara/" target="_blank" rel="noopener noreferrer">
+      <h2>Instagram</h2><span>@tecnovara</span>
+    </a>
+    <a class="red" href="https://www.facebook.com/profile.php?id=61596307817949" target="_blank" rel="noopener noreferrer">
+      <h2>Facebook</h2><span>TECNOVARA en Facebook</span>
+    </a>
+  </div>
+</main>
+
+<footer>TECNOVARA es un proyecto educativo independiente.</footer>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}</script>
+</body>
+</html>
