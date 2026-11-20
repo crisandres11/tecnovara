@@ -1,4 +1,4 @@
-const V = "tecnovara-v12";
+const V = "tecnovara-v13";
 const PRE = [
   "/", "/cursos/", "/contacto/", "/clase/", "/prueba/",
   "/cursodecanva/", "/cursodecanva/logrado/",
@@ -8,6 +8,7 @@ const PRE = [
   "/cursodegmail/parte3/", "/cursodegmail/parte3/logrado/",
   "/cursodegoogleforms/", "/cursodegoogleforms/logrado/",
   "/cursodegoogledocs/", "/cursodegoogledocs/logrado/",
+  "/cursodegoogledocs/seccion2/parte2/", "/cursodegoogledocs/seccion2/parte2/logrado/",
   "/cursodegooglemeet/", "/cursodegooglemeet/logrado/",
   "/cursodeclassroom/", "/cursodeclassroom/logrado/",
   "/favicon.ico", "/valoraciones.js", "/assets/Star.png", "/assets/StarNoColor.png", "/assets/icon-192.png", "/assets/icon-512.png",
@@ -20,6 +21,7 @@ const PRE = [
   "/assets/GoogleMeet1.png", "/assets/GoogleMeet2.png", "/assets/GoogleMeet3.png", "/assets/GoogleMeet4.png",
   "/assets/Classroom1.png", "/assets/Classroom2.png", "/assets/Classroom3.png",
   "/assets/GoogleDocs1.png", "/assets/GoogleDocs2.png", "/assets/GoogleDocs3.png",
+  "/assets/GoogleDocs_2_2_1.png", "/assets/GoogleDocs_2_2_2.png",
   "/assets/GoogleForms.png", "/assets/GoogleForms1.png", "/assets/GoogleForms2.png",
   "/assets/GoogleForms3.png", "/assets/GoogleForms4.png", "/assets/GoogleForms5.png",
   "/assets/Correct.mp3"
