@@ -58,6 +58,10 @@
     .btn:hover { transform:translateY(-3px); box-shadow:0 8px 22px rgba(47,91,255,.2); }
     .btn:active { transform:translateY(0) scale(.98); }
     .btn.alt { background:transparent; color:var(--ink); border:1px solid var(--line); margin-left:8px; }
+    .acciones { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .acciones .btn.alt { margin:0; }
+    .btn.dl { display:inline-flex; align-items:center; gap:10px; }
+    .btn.dl img { width:22px; height:22px; display:block; flex:none; }
     section { padding:56px 0; }
     section h2 { font-size:clamp(1.8rem,4.5vw,2.6rem); margin-bottom:12px; }
     .lead { color:var(--mut); max-width:60ch; margin:0 0 30px; }
@@ -144,9 +148,12 @@
   <div class="wrap hero">
     <h1>Aprender tecnología <span>no debería costar nada.</span></h1>
     <p>TECNOVARA es una academia digital independiente con cursos sencillos y gratuitos. Aprende habilidades tecnológicas con ejemplos prácticos y avanza a tu propio ritmo.</p>
-    <a class="btn" href="/cursos/">Ver cursos</a>
-    <a class="btn alt" href="#proyecto">Conoce el proyecto</a>
-    <button class="btn alt" id="inst" type="button">Instalar app</button>
+    <div class="acciones">
+      <a class="btn" href="/cursos/">Ver cursos</a>
+      <a class="btn alt" href="#proyecto">Conoce el proyecto</a>
+      <button class="btn alt" id="inst" type="button">Instalar app</button>
+      <a class="btn alt dl" href="https://apk.e-droid.net/apk/app4240020-qjs6mv.apk?v=2" rel="noopener"><img src="/assets/Android.webp" alt="" width="22" height="22"><span>Descargar aplicación para teléfono</span></a>
+    </div>
   </div>
   <section id="que-es" class="alt-bg reveal">
     <div class="wrap">
