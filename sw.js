@@ -1,4 +1,4 @@
-const V = "tecnovara-v14";
+const V = "tecnovara-v15";
 const PRE = [
   "/", "/cursos/", "/contacto/", "/clase/", "/prueba/",
   "/cursodecanva/", "/cursodecanva/logrado/",
@@ -25,6 +25,7 @@ const PRE = [
   "/assets/GoogleDocs_2_2_1.png", "/assets/GoogleDocs_2_2_2.png",
   "/assets/GoogleForms.png", "/assets/GoogleForms1.png", "/assets/GoogleForms2.png",
   "/assets/GoogleForms3.png", "/assets/GoogleForms4.png", "/assets/GoogleForms5.png",
+  "/assets/Android.webp",
   "/assets/Correct.mp3"
 ];
 
