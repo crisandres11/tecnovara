@@ -62,6 +62,15 @@
     .acciones .btn.alt { margin:0; }
     .btn.dl { display:inline-flex; align-items:center; gap:10px; }
     .btn.dl img { width:22px; height:22px; display:block; flex:none; }
+    .noticia { display:block; background:var(--surf); border:1px solid var(--line); border-left:5px solid var(--acc2); border-radius:0 14px 14px 0; padding:22px 24px; text-decoration:none; color:var(--ink); max-width:760px; transition:transform .25s ease, border-color .25s ease; }
+    .noticia:hover { transform:translateY(-4px); border-color:var(--acc); }
+    .noticia .meta { display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; color:var(--mut); font-size:15px; margin-bottom:6px; }
+    .noticia .tag { background:var(--acc2); color:#14213d; font-weight:600; border-radius:6px; padding:0 10px; font-size:14px; }
+    .noticia h3 { font-size:1.5rem; margin-bottom:8px; }
+    .noticia p { margin:0 0 8px; color:var(--mut); }
+    .noticia .mas { color:var(--acc); font-weight:600; }
+    .vermas { margin-top:20px; }
+    .vermas .btn.alt { margin:0; }
     section { padding:56px 0; }
     section h2 { font-size:clamp(1.8rem,4.5vw,2.6rem); margin-bottom:12px; }
     .lead { color:var(--mut); max-width:60ch; margin:0 0 30px; }
@@ -138,6 +147,7 @@
       <a href="#que-es">Qué es</a>
       <a href="/cursos/">Cursos</a>
       <a href="/clase/">Salón de clases</a>
+      <a href="/noticias/">Noticias</a>
       <a href="#proyecto">El proyecto</a>
       <a href="/contacto/">Contacto</a>
       <select id="tema" class="tema" aria-label="Tema de color"><option value="auto">Predeterminado</option><option value="light">Claro</option><option value="dark">Oscuro</option></select>
@@ -184,7 +194,20 @@
       </ol>
     </div>
   </section>
-  <section id="proyecto" class="reveal">
+  <section id="noticias" class="reveal">
+    <div class="wrap">
+      <h2>Noticias</h2>
+      <p class="lead">Las novedades de TECNOVARA: nuevos cursos, mejoras del sitio y anuncios de la academia digital.</p>
+      <a class="noticia" href="/noticias/tecnovara1.html">
+        <div class="meta"><span class="tag">Noticia</span><time datetime="2026-11-23">23 de noviembre de 2026</time></div>
+        <h3>Tecnovara desarrolla nuevos cursos para su sistema</h3>
+        <p>TECNOVARA prepara una importante ampliación de su oferta educativa gratuita, con diez nuevos cursos orientados al aprendizaje de herramientas digitales, plataformas y creación de páginas web.</p>
+        <span class="mas">Leer noticia →</span>
+      </a>
+      <div class="vermas"><a class="btn alt" href="/noticias/">Ver todas las noticias</a></div>
+    </div>
+  </section>
+  <section id="proyecto" class="alt-bg reveal">
     <div class="wrap about">
       <h2>Sobre el proyecto</h2>
       <p>TECNOVARA nació con una idea sencilla: el aprendizaje de la tecnología debería estar al alcance de todos. Por eso, reúne cursos gratuitos que explican herramientas y conceptos digitales de forma clara y práctica.</p>
@@ -192,7 +215,7 @@
       <div class="note">TECNOVARA es un proyecto educativo independiente. No representa ni está oficialmente asociado con Canva, Google u otras marcas mencionadas en sus cursos.</div>
     </div>
   </section>
-  <section id="contacto" class="alt-bg reveal">
+  <section id="contacto" class="reveal">
     <div class="wrap about">
       <h2>¿Algo que contarnos?</h2>
       <p class="lead">Reporta un error o cuéntanos qué te parece TECNOVARA. Tu opinión importa.</p>
@@ -200,7 +223,7 @@
     </div>
   </section>
 </main>
-<footer><div class="wrap"><p><b>TECNOVARA</b> · Academia Digital</p><p>Aprende. Descubre. Progresa.</p><p>Proyecto educativo independiente y gratuito.</p><p><a href="/contacto/">Contacto</a></p></div></footer>
+<footer><div class="wrap"><p><b>TECNOVARA</b> · Academia Digital</p><p>Aprende. Descubre. Progresa.</p><p>Proyecto educativo independiente y gratuito.</p><p><a href="/noticias/">Noticias</a> · <a href="/contacto/">Contacto</a></p></div></footer>
 <dialog id="dinst" aria-labelledby="tdinst">
   <h2 id="tdinst">Instalar TECNOVARA</h2>
   <p>Tu navegador no mostró la instalación automática. Prueba así:</p>
