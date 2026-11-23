@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://tecnovara.pages.dev/</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://tecnovara.pages.dev/</loc><lastmod>2026-11-23</lastmod></url>
   <url><loc>https://tecnovara.pages.dev/cursos/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://tecnovara.pages.dev/cursodecanva/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://tecnovara.pages.dev/cursodecanva/parte2/</loc><lastmod>2026-11-11</lastmod></url>
@@ -14,4 +14,6 @@
   <url><loc>https://tecnovara.pages.dev/cursodegoogledocs/seccion2/parte2/</loc><lastmod>2026-11-19</lastmod></url>
   <url><loc>https://tecnovara.pages.dev/cursodegoogledrive/seccion2/parte1/</loc><lastmod>2026-11-21</lastmod></url>
   <url><loc>https://tecnovara.pages.dev/contacto/</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://tecnovara.pages.dev/noticias/</loc><lastmod>2026-11-23</lastmod></url>
+  <url><loc>https://tecnovara.pages.dev/noticias/tecnovara1</loc><lastmod>2026-11-23</lastmod></url>
 </urlset>
